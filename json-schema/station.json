@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.tidesandcurrents.noaa.gov/schemas/station",
+  "title": "CO-OPS Station",
+  "description": "A NOAA CO-OPS monitoring station with location, affiliation, and available data products.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique station identifier. 7 numeric digits for water level and meteorological stations; alphanumeric codes for current meter stations.",
+      "examples": ["9414290", "8454000", "cb1401"]
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the monitoring station.",
+      "examples": ["San Francisco", "Providence", "Chesapeake Bay Entrance"]
+    },
+    "lat": {
+      "type": "number",
+      "description": "Station latitude in decimal degrees (WGS84).",
+      "minimum": -90,
+      "maximum": 90,
+      "examples": [37.8063, 41.6779]
+    },
+    "lng": {
+      "type": "number",
+      "description": "Station longitude in decimal degrees (WGS84).",
+      "minimum": -180,
+      "maximum": 180,
+      "examples": [-122.4659, -71.4011]
+    },
+    "state": {
+      "type": "string",
+      "description": "US state or territory abbreviation.",
+      "examples": ["CA", "RI", "VA"]
+    },
+    "timezone": {
+      "type": "string",
+      "description": "IANA timezone string for the station's local time zone.",
+      "examples": ["America/Los_Angeles", "America/New_York"]
+    },
+    "timezonecorr": {
+      "type": "integer",
+      "description": "UTC offset in hours for the station's local standard time.",
+      "examples": [-8, -5]
+    },
+    "observedst": {
+      "type": "boolean",
+      "description": "Whether the station observes daylight saving time."
+    },
+    "stormsurge": {
+      "type": "number",
+      "description": "Storm surge threshold for this station in meters.",
+      "examples": [0.6, 0.9]
+    },
+    "portscode": {
+      "type": ["string", "null"],
+      "description": "PORTS (Physical Oceanographic Real-Time System) code if this station is part of a PORTS system.",
+      "examples": ["sf", "cb", null]
+    },
+    "products": {
+      "type": "object",
+      "description": "Data products available at this station.",
+      "properties": {
+        "product": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Product name",
+                "examples": ["Water Levels", "Tide Predictions", "Wind"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "datums": {
+      "type": "array",
+      "description": "Vertical datums available for this station.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Datum name",
+            "enum": [
+              "CRD", "IGLD", "LWD", "MHHW", "MHW", "MTL",
+              "MSL", "MLW", "MLLW", "NAVD", "STND"
+            ]
+          },
+          "value": {
+            "type": "number",
+            "description": "Datum value relative to station datum (STND) in meters"
+          }
+        }
+      }
+    },
+    "affiliations": {
+      "type": "string",
+      "description": "Organizational affiliation(s) of the station.",
+      "examples": ["NWLON", "PORTS", "COOP"]
+    },
+    "self": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical URL for this station resource.",
+      "examples": ["https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json"]
+    }
+  },
+  "required": ["id", "name", "lat", "lng"]
+}

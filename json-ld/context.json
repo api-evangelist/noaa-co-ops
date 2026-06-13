@@ -1,0 +1,113 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "noaa": "https://tidesandcurrents.noaa.gov/vocab/",
+    "coops": "https://api.tidesandcurrents.noaa.gov/api/prod/",
+    "Station": {
+      "@id": "noaa:Station",
+      "@type": "@id"
+    },
+    "stationId": {
+      "@id": "noaa:stationId"
+    },
+    "stationName": {
+      "@id": "schema:name"
+    },
+    "lat": {
+      "@id": "schema:latitude",
+      "@type": "xsd:decimal"
+    },
+    "lng": {
+      "@id": "schema:longitude",
+      "@type": "xsd:decimal"
+    },
+    "affiliations": {
+      "@id": "noaa:affiliation"
+    },
+    "portscode": {
+      "@id": "noaa:portsCode"
+    },
+    "DataPoint": {
+      "@id": "noaa:DataPoint"
+    },
+    "t": {
+      "@id": "schema:observationDate",
+      "@type": "xsd:dateTime"
+    },
+    "v": {
+      "@id": "schema:value",
+      "@type": "xsd:decimal"
+    },
+    "s": {
+      "@id": "noaa:standardDeviation",
+      "@type": "xsd:decimal"
+    },
+    "f": {
+      "@id": "noaa:qualityFlag"
+    },
+    "q": {
+      "@id": "noaa:qualityLevel",
+      "@type": "@vocab",
+      "@vocab": {
+        "v": "noaa:Verified",
+        "p": "noaa:Preliminary"
+      }
+    },
+    "datum": {
+      "@id": "noaa:datum",
+      "@type": "@vocab"
+    },
+    "product": {
+      "@id": "noaa:product",
+      "@type": "@vocab"
+    },
+    "units": {
+      "@id": "schema:unitText"
+    },
+    "WaterLevel": {
+      "@id": "noaa:WaterLevel"
+    },
+    "TidePrediction": {
+      "@id": "noaa:TidePrediction"
+    },
+    "CurrentObservation": {
+      "@id": "noaa:CurrentObservation"
+    },
+    "SeaLevelTrend": {
+      "@id": "noaa:SeaLevelTrend"
+    },
+    "trend": {
+      "@id": "noaa:trendRate",
+      "@type": "xsd:decimal"
+    },
+    "ci95": {
+      "@id": "noaa:confidenceInterval95",
+      "@type": "xsd:decimal"
+    },
+    "startYear": {
+      "@id": "noaa:recordStartYear",
+      "@type": "xsd:integer"
+    },
+    "endYear": {
+      "@id": "noaa:recordEndYear",
+      "@type": "xsd:integer"
+    },
+    "HighTideFlooding": {
+      "@id": "noaa:HighTideFlooding"
+    },
+    "Datum": {
+      "@id": "noaa:TidalDatum"
+    },
+    "MLLW": "noaa:MLLW",
+    "MHHW": "noaa:MHHW",
+    "MHW": "noaa:MHW",
+    "MLW": "noaa:MLW",
+    "MSL": "noaa:MSL",
+    "MTL": "noaa:MTL",
+    "NAVD": "noaa:NAVD",
+    "STND": "noaa:STND",
+    "IGLD": "noaa:IGLD",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/"
+  }
+}

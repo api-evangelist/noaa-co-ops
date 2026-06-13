@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.tidesandcurrents.noaa.gov/schemas/data-point",
+  "title": "CO-OPS Data Point",
+  "description": "A single observational or predicted data record returned by the NOAA CO-OPS Data Retrieval API.",
+  "type": "object",
+  "properties": {
+    "t": {
+      "type": "string",
+      "description": "Timestamp in YYYY-MM-DD HH:mm format (local standard time, local standard/daylight time, or GMT depending on the time_zone parameter).",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}$",
+      "examples": ["2023-01-01 00:00", "2023-06-15 12:06"]
+    },
+    "v": {
+      "type": "string",
+      "description": "Observed or predicted value. Units depend on the product and units parameter (metric or english).",
+      "examples": ["1.234", "-0.012", "9.81"]
+    },
+    "s": {
+      "type": "string",
+      "description": "Standard deviation of the 1-second samples used to compute the 6-minute water level sample. Only present for water_level product.",
+      "examples": ["0.009", "0.014"]
+    },
+    "f": {
+      "type": "string",
+      "description": "Data quality flags as a comma-separated string of four integers (O,S,L,B flags). 0=good, 1=suspect.",
+      "pattern": "^[0-9],[0-9],[0-9],[0-9]$",
+      "examples": ["0,0,0,0", "0,1,0,0"]
+    },
+    "q": {
+      "type": "string",
+      "description": "QA/QC level of the data. 'v'=verified, 'p'=preliminary.",
+      "enum": ["v", "p"],
+      "examples": ["v", "p"]
+    },
+    "d": {
+      "type": "string",
+      "description": "Wind direction in degrees (wind product only).",
+      "examples": ["180", "270"]
+    },
+    "dr": {
+      "type": "string",
+      "description": "Wind direction as a cardinal compass point (wind product only).",
+      "examples": ["S", "W", "NNE"]
+    },
+    "g": {
+      "type": "string",
+      "description": "Wind gust speed (wind product only).",
+      "examples": ["12.3", "5.6"]
+    },
+    "rf": {
+      "type": "string",
+      "description": "Flood threshold reference flag.",
+      "examples": ["0", "1"]
+    }
+  },
+  "required": ["t", "v"]
+}

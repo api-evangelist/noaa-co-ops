@@ -1,0 +1,45 @@
+{
+  "description": "Example JSON response from the CO-OPS Metadata API for station 9414290 (San Francisco) with datums and sensors expanded.",
+  "request_url": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json?expand=datums,sensors&units=metric",
+  "stations": [
+    {
+      "id": "9414290",
+      "name": "San Francisco",
+      "lat": 37.8063,
+      "lng": -122.4659,
+      "affiliations": "NWLON",
+      "portscode": "sf",
+      "products": {
+        "product": [
+          {"name": "Water Levels"},
+          {"name": "Tide Predictions"},
+          {"name": "Wind"},
+          {"name": "Air Temperature"},
+          {"name": "Water Temperature"},
+          {"name": "Air Pressure"},
+          {"name": "Humidity"},
+          {"name": "Conductivity"},
+          {"name": "Visibility"}
+        ]
+      },
+      "datums": [
+        {"name": "MHHW", "value": 1.744},
+        {"name": "MHW",  "value": 1.628},
+        {"name": "MTL",  "value": 0.939},
+        {"name": "MSL",  "value": 0.908},
+        {"name": "MLW",  "value": 0.249},
+        {"name": "MLLW", "value": 0.0},
+        {"name": "NAVD", "value": 0.745},
+        {"name": "STND", "value": -2.358}
+      ],
+      "sensors": {
+        "sensor": [
+          {"name": "Water Level", "sensorID": "A1", "units": "m", "accuracy": 0.003},
+          {"name": "Wind Speed",  "sensorID": "W1", "units": "m/s"},
+          {"name": "Air Temp",    "sensorID": "T1", "units": "°C"}
+        ]
+      },
+      "self": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json"
+    }
+  ]
+}

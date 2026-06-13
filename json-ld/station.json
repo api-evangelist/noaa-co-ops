@@ -1,0 +1,24 @@
+{
+  "@context": "https://api.tidesandcurrents.noaa.gov/json-ld/context.json",
+  "@type": "Station",
+  "@id": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json",
+  "stationId": "9414290",
+  "stationName": "San Francisco",
+  "schema:description": "Long-term NOAA tide gauge and meteorological station at San Francisco Bay. One of the longest continuously operating tide stations in the US, with records dating back to 1854.",
+  "lat": 37.8063,
+  "lng": -122.4659,
+  "schema:address": {
+    "@type": "schema:PostalAddress",
+    "schema:addressRegion": "CA",
+    "schema:addressCountry": "US"
+  },
+  "affiliations": "NWLON",
+  "portscode": "sf",
+  "schema:url": "https://tidesandcurrents.noaa.gov/stationhome.html?id=9414290",
+  "schema:provider": {
+    "@type": "schema:GovernmentOrganization",
+    "@id": "https://tidesandcurrents.noaa.gov/",
+    "schema:name": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
+    "schema:url": "https://tidesandcurrents.noaa.gov/"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "description": "Example JSON response from the CO-OPS Data Retrieval API for 6-minute water level observations at San Francisco.",
+  "metadata": {
+    "id": "9414290",
+    "name": "San Francisco",
+    "lat": "37.8063",
+    "lon": "-122.4659"
+  },
+  "data": [
+    {
+      "t": "2023-01-01 00:00",
+      "v": "1.234",
+      "s": "0.009",
+      "f": "0,0,0,0",
+      "q": "v"
+    },
+    {
+      "t": "2023-01-01 00:06",
+      "v": "1.198",
+      "s": "0.008",
+      "f": "0,0,0,0",
+      "q": "v"
+    },
+    {
+      "t": "2023-01-01 00:12",
+      "v": "1.153",
+      "s": "0.011",
+      "f": "0,0,0,0",
+      "q": "v"
+    }
+  ]
+}

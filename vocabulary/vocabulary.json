@@ -1,0 +1,201 @@
+{
+  "name": "NOAA CO-OPS Vocabulary",
+  "description": "Domain terms and definitions for the NOAA Center for Operational Oceanographic Products and Services (CO-OPS) APIs covering tides, currents, water levels, and oceanographic data.",
+  "url": "https://tidesandcurrents.noaa.gov/",
+  "terms": [
+    {
+      "term": "water_level",
+      "label": "Water Level",
+      "definition": "The observed height of the water surface above or below a reference datum, measured by a tide gauge. Includes storm surge, tides, and long-term sea level change.",
+      "unit": "meters (metric) or feet (english)"
+    },
+    {
+      "term": "predictions",
+      "label": "Tide Predictions",
+      "definition": "Astronomical tide predictions computed from harmonic constituents, representing the expected water level due to gravitational effects of the moon and sun only (excluding weather effects).",
+      "unit": "meters (metric) or feet (english)"
+    },
+    {
+      "term": "high_low",
+      "label": "High/Low Water",
+      "definition": "The predicted or observed times and heights of high and low tide events within a day.",
+      "unit": "meters (metric) or feet (english)"
+    },
+    {
+      "term": "hourly_height",
+      "label": "Hourly Height",
+      "definition": "Verified hourly water level heights, averaged from 6-minute observations.",
+      "unit": "meters (metric) or feet (english)"
+    },
+    {
+      "term": "daily_mean",
+      "label": "Daily Mean",
+      "definition": "Daily mean water level computed from hourly observations.",
+      "unit": "meters (metric) or feet (english)"
+    },
+    {
+      "term": "wind",
+      "label": "Wind",
+      "definition": "Sustained wind speed and direction at the station, averaged over an interval.",
+      "unit": "m/s (metric) or knots (english)"
+    },
+    {
+      "term": "air_pressure",
+      "label": "Air Pressure",
+      "definition": "Barometric (atmospheric) pressure at the station.",
+      "unit": "mb (metric) or inches Hg (english)"
+    },
+    {
+      "term": "air_temperature",
+      "label": "Air Temperature",
+      "definition": "Air temperature measured at the station.",
+      "unit": "°C (metric) or °F (english)"
+    },
+    {
+      "term": "water_temperature",
+      "label": "Water Temperature",
+      "definition": "Temperature of the water surface at the station sensor.",
+      "unit": "°C (metric) or °F (english)"
+    },
+    {
+      "term": "conductivity",
+      "label": "Conductivity",
+      "definition": "Electrical conductivity of water at the station, which is related to salinity.",
+      "unit": "mS/cm"
+    },
+    {
+      "term": "salinity",
+      "label": "Salinity",
+      "definition": "Salt concentration of the water at the station, derived from conductivity measurements.",
+      "unit": "PSU (Practical Salinity Units)"
+    },
+    {
+      "term": "visibility",
+      "label": "Visibility",
+      "definition": "Horizontal visibility measured at the station, typically by a forward scatter sensor.",
+      "unit": "nautical miles (metric and english)"
+    },
+    {
+      "term": "humidity",
+      "label": "Relative Humidity",
+      "definition": "Relative humidity of the air at the station as a percentage.",
+      "unit": "percent (%)"
+    },
+    {
+      "term": "currents",
+      "label": "Currents",
+      "definition": "Observed water current velocity and direction from acoustic Doppler current profiler (ADCP) or acoustic current meter (ACM) sensors.",
+      "unit": "cm/s (metric) or knots (english)"
+    },
+    {
+      "term": "currents_predictions",
+      "label": "Currents Predictions",
+      "definition": "Predicted tidal current velocity and direction computed from harmonic constituents.",
+      "unit": "cm/s (metric) or knots (english)"
+    },
+    {
+      "term": "air_gap",
+      "label": "Air Gap",
+      "definition": "The vertical clearance between the water surface and the underside of a bridge or structure, measured at a specific location.",
+      "unit": "meters (metric) or feet (english)"
+    },
+    {
+      "term": "MLLW",
+      "label": "Mean Lower Low Water",
+      "definition": "The average of the lower of the two daily low waters observed over the National Tidal Datum Epoch (1983-2001). The standard tidal datum used for most NOAA tide data.",
+      "type": "datum"
+    },
+    {
+      "term": "MHHW",
+      "label": "Mean Higher High Water",
+      "definition": "The average of the higher of the two daily high waters over the National Tidal Datum Epoch.",
+      "type": "datum"
+    },
+    {
+      "term": "MHW",
+      "label": "Mean High Water",
+      "definition": "The average of all high water heights over the National Tidal Datum Epoch.",
+      "type": "datum"
+    },
+    {
+      "term": "MLW",
+      "label": "Mean Low Water",
+      "definition": "The average of all low water heights over the National Tidal Datum Epoch.",
+      "type": "datum"
+    },
+    {
+      "term": "MSL",
+      "label": "Mean Sea Level",
+      "definition": "The arithmetic mean of hourly water levels over the National Tidal Datum Epoch.",
+      "type": "datum"
+    },
+    {
+      "term": "MTL",
+      "label": "Mean Tide Level",
+      "definition": "The arithmetic mean of mean high water and mean low water.",
+      "type": "datum"
+    },
+    {
+      "term": "NAVD",
+      "label": "North American Vertical Datum of 1988",
+      "definition": "A fixed geodetic vertical datum established by the National Geodetic Survey. Used as reference for most modern US elevation data.",
+      "type": "datum"
+    },
+    {
+      "term": "STND",
+      "label": "Station Datum",
+      "definition": "The arbitrary fixed reference datum unique to each tide station, used as the zero point for all gauge measurements.",
+      "type": "datum"
+    },
+    {
+      "term": "IGLD",
+      "label": "International Great Lakes Datum",
+      "definition": "Vertical datum used for Great Lakes water level measurements.",
+      "type": "datum"
+    },
+    {
+      "term": "harcon",
+      "label": "Harmonic Constituents",
+      "definition": "Amplitude and phase values for tidal harmonic components (e.g., M2, S2, K1, O1) derived from observed water levels. Used to predict future tides.",
+      "type": "resource"
+    },
+    {
+      "term": "datum",
+      "label": "Tidal Datums",
+      "definition": "Computed statistical water levels (MLLW, MHW, MSL, etc.) used as reference planes for water level measurements at a station.",
+      "type": "resource"
+    },
+    {
+      "term": "NWLON",
+      "label": "National Water Level Observation Network",
+      "definition": "NOAA's primary network of long-term, continuously operating tide stations that form the backbone of the National Tidal Datum Epoch.",
+      "type": "affiliation"
+    },
+    {
+      "term": "PORTS",
+      "label": "Physical Oceanographic Real-Time System",
+      "definition": "NOAA's real-time environmental monitoring systems deployed in major US ports and harbors to support safe and efficient maritime navigation.",
+      "type": "affiliation"
+    },
+    {
+      "term": "high_tide_flooding",
+      "label": "High Tide Flooding",
+      "definition": "Also called 'nuisance flooding' or 'sunny day flooding', occurs when water levels exceed minor flood thresholds during high tide events without storm activity.",
+      "type": "product"
+    },
+    {
+      "term": "sea_level_trend",
+      "label": "Sea Level Trend",
+      "definition": "The long-term rate of change in mean sea level at a station, expressed in millimeters per year, calculated from monthly mean sea level data.",
+      "unit": "mm/year",
+      "type": "product"
+    },
+    {
+      "term": "storm_surge",
+      "label": "Storm Surge",
+      "definition": "The abnormal rise in sea level during a storm event above predicted tidal levels, caused by strong winds and low atmospheric pressure.",
+      "unit": "meters (metric) or feet (english)",
+      "type": "concept"
+    }
+  ]
+}

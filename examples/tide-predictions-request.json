@@ -1,0 +1,16 @@
+{
+  "description": "Example request for tide predictions at Boston (station 8443970) for the next 48 hours in english units, relative to MLLW.",
+  "method": "GET",
+  "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=8443970&product=predictions&datum=MLLW&date=today&range=48&time_zone=lst_ldt&units=english&interval=h&format=json",
+  "parameters": {
+    "station": "8443970",
+    "product": "predictions",
+    "datum": "MLLW",
+    "date": "today",
+    "range": 48,
+    "time_zone": "lst_ldt",
+    "units": "english",
+    "interval": "h",
+    "format": "json"
+  }
+}

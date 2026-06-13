@@ -31,7 +31,7 @@ apis:
       - type: Documentation
         url: https://tidesandcurrents.noaa.gov/api/
       - type: OpenAPI
-        url: https://api.tidesandcurrents.noaa.gov/api/prod/
+        url: /openapi/data-retrieval-api.json
     contact:
       - FN: CO-OPS User Services
         email: co-ops.userservices@noaa.gov
@@ -57,6 +57,8 @@ apis:
     properties:
       - type: Documentation
         url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+      - type: OpenAPI
+        url: /openapi/metadata-api.json
     contact:
       - FN: CO-OPS User Services
         email: co-ops.userservices@noaa.gov
@@ -76,6 +78,8 @@ apis:
     properties:
       - type: Documentation
         url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+      - type: OpenAPI
+        url: /openapi/derived-product-api.json
     contact:
       - FN: Tide Predictions
         email: tide.predictions@noaa.gov
@@ -99,6 +103,26 @@ common:
     url: /rate-limits/rate-limits.md
   - type: FinOps
     url: /finops/finops.md
+  - type: JSONSchema
+    url: /json-schema/data-point.json
+  - type: JSONSchema
+    url: /json-schema/station.json
+  - type: Example
+    url: /examples/water-level-request.json
+  - type: Example
+    url: /examples/water-level-response.json
+  - type: Example
+    url: /examples/tide-predictions-request.json
+  - type: Example
+    url: /examples/station-metadata-response.json
+  - type: Example
+    url: /examples/sea-level-trend-response.json
+  - type: Vocabulary
+    url: /vocabulary/vocabulary.json
+  - type: JSONLDContext
+    url: /json-ld/context.json
+  - type: JSONLD
+    url: /json-ld/station.json
 
 maintainers:
   - FN: Kin Lane

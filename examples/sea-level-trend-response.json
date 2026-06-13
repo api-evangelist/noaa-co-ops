@@ -1,0 +1,19 @@
+{
+  "description": "Example JSON response from the CO-OPS Derived Product API for sea level trend at San Francisco (station 9414290).",
+  "request_url": "https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/sealvltrends?station=9414290",
+  "data": [
+    {
+      "stationId": "9414290",
+      "stationName": "San Francisco, CA",
+      "trend": 1.94,
+      "ci95": 0.19,
+      "units": "mm/yr",
+      "startYear": 1897,
+      "endYear": 2022,
+      "absoluteTrend": 3.18,
+      "absoluteCi95": 0.15,
+      "lat": 37.8063,
+      "lon": -122.4659
+    }
+  ]
+}
