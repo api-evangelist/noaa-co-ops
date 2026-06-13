@@ -1,0 +1,105 @@
+name: NOAA CO-OPS
+description: NOAA Center for Operational Oceanographic Products and Services (CO-OPS) provides REST APIs for tides and currents predictions, observed water levels, meteorological data (wind, barometric pressure, air and water temperature), and oceanographic products. The APIs serve real-time and historical data from NOAA observation stations across the United States coastline and Great Lakes.
+image: https://tidesandcurrents.noaa.gov/images/noaa-logo.png
+url: https://tidesandcurrents.noaa.gov/
+tags:
+  - NOAA
+  - Tides
+  - Currents
+  - Oceanographic
+  - Water Level
+  - Weather
+  - Predictions
+  - Government
+created: "2026-06-13"
+modified: "2026-06-13"
+specificationVersion: "0.19"
+apis:
+  - name: CO-OPS Data Retrieval API
+    description: Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.
+    image: https://tidesandcurrents.noaa.gov/images/noaa-logo.png
+    humanURL: https://tidesandcurrents.noaa.gov/api/
+    baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+    tags:
+      - Water Level
+      - Tides
+      - Currents
+      - Meteorological
+      - Predictions
+      - Observations
+    properties:
+      - type: Documentation
+        url: https://tidesandcurrents.noaa.gov/api/
+      - type: OpenAPI
+        url: https://api.tidesandcurrents.noaa.gov/api/prod/
+    contact:
+      - FN: CO-OPS User Services
+        email: co-ops.userservices@noaa.gov
+    x-products:
+      - name: Free
+        url: /plans/free.md
+    x-rate-limits:
+      - url: /rate-limits/rate-limits.md
+    x-finops:
+      - url: /finops/finops.md
+
+  - name: CO-OPS Metadata API
+    description: Provides access to metadata for NOAA CO-OPS monitoring stations, including station locations, sensor configurations, harmonic constituents, datums, benchmark data, flood levels, and tide prediction offsets.
+    image: https://tidesandcurrents.noaa.gov/images/noaa-logo.png
+    humanURL: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+    baseURL: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+    tags:
+      - Metadata
+      - Stations
+      - Datums
+      - Benchmarks
+      - Harmonic Constituents
+    properties:
+      - type: Documentation
+        url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+    contact:
+      - FN: CO-OPS User Services
+        email: co-ops.userservices@noaa.gov
+
+  - name: CO-OPS Derived Product API
+    description: Provides derived oceanographic products computed from CO-OPS observational data, including sea level trends, sea level rise projections, high tide flooding statistics and projections, extreme water levels, peak water levels, and benchmark data.
+    image: https://tidesandcurrents.noaa.gov/images/noaa-logo.png
+    humanURL: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+    baseURL: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+    tags:
+      - Sea Level
+      - Flooding
+      - Trends
+      - Projections
+      - Extreme Water Levels
+      - High Tide Flooding
+    properties:
+      - type: Documentation
+        url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+    contact:
+      - FN: Tide Predictions
+        email: tide.predictions@noaa.gov
+
+common:
+  - type: Portal
+    url: https://tidesandcurrents.noaa.gov/
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/web_services_info.html
+  - type: PrivacyPolicy
+    url: https://www.noaa.gov/privacy-policy
+  - type: TermsOfService
+    url: https://www.noaa.gov/disclaimer
+  - type: Contact
+    url: https://tidesandcurrents.noaa.gov/contact.html
+  - type: StatusPage
+    url: https://tidesandcurrents.noaa.gov/
+  - type: Plans
+    url: /plans/free.md
+  - type: RateLimits
+    url: /rate-limits/rate-limits.md
+  - type: FinOps
+    url: /finops/finops.md
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
