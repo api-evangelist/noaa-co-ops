@@ -107,15 +107,15 @@ common:
     url: /json-schema/data-point.json
   - type: JSONSchema
     url: /json-schema/station.json
-  - type: Example
+  - type: Examples
     url: /examples/water-level-request.json
-  - type: Example
+  - type: Examples
     url: /examples/water-level-response.json
-  - type: Example
+  - type: Examples
     url: /examples/tide-predictions-request.json
-  - type: Example
+  - type: Examples
     url: /examples/station-metadata-response.json
-  - type: Example
+  - type: Examples
     url: /examples/sea-level-trend-response.json
   - type: Vocabulary
     url: /vocabulary/vocabulary.json
