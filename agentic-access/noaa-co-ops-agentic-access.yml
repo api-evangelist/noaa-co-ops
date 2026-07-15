@@ -1,0 +1,154 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/data-retrieval-api.json, openapi/derived-product-api.json, openapi/metadata-api.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 14
+  by_action_class:
+    connected: 14
+  by_consequence:
+    read: 14
+  human_in_the_loop_required: 0
+operations:
+- path: /datagetter
+  method: get
+  operationId: getData
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /toptenwaterlevels
+  method: get
+  operationId: getTopTenWaterLevels
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /peakwaterlevels
+  method: get
+  operationId: getPeakWaterLevels
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /extremewaterlevels
+  method: get
+  operationId: getExtremeWaterLevels
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sealvltrends
+  method: get
+  operationId: getSeaLevelTrends
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /slr_projections
+  method: get
+  operationId: getSeaLevelRiseProjections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /htf_annual
+  method: get
+  operationId: getHighTideFloodingAnnual
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /htf_monthly
+  method: get
+  operationId: getHighTideFloodingMonthly
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /htf_projection_decadal
+  method: get
+  operationId: getHighTideFloodingProjectionDecadal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /benchmarks
+  method: get
+  operationId: getBenchmarks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stations.json
+  method: get
+  operationId: listStations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stations/{stationId}.json
+  method: get
+  operationId: getStation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stations/{stationId}/{resource}.json
+  method: get
+  operationId: getStationResource
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ports.json
+  method: get
+  operationId: listPorts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

@@ -85,6 +85,8 @@ apis:
         email: tide.predictions@noaa.gov
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/noaa-co-ops-agentic-access.yml
   - type: DomainSecurity
     url: security/noaa-co-ops-domain-security.yml
   - type: Portal
