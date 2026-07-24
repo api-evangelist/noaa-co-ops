@@ -1,0 +1,80 @@
+openapi: 3.0.3
+info:
+  title: NOAA CO-OPS Data Retrieval Benchmarks Sealvltrends API
+  description: Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.
+  version: 1.0.0
+  contact:
+    name: CO-OPS User Services
+    email: co-ops.userservices@noaa.gov
+  license:
+    name: Public Domain
+    url: https://www.noaa.gov/disclaimer
+servers:
+- url: https://api.tidesandcurrents.noaa.gov/api/prod
+  description: NOAA CO-OPS Data Retrieval API
+tags:
+- name: Sealvltrends
+paths:
+  /sealvltrends:
+    get:
+      operationId: getSeaLevelTrends
+      summary: Get sea level trends
+      description: Returns mean sea level trend data for a given station, including rate of change and confidence intervals.
+      parameters:
+      - name: station
+        in: query
+        required: true
+        description: 7-digit station ID.
+        schema:
+          type: string
+          example: '9414290'
+      - name: affiliation
+        in: query
+        required: false
+        description: Station affiliation context.
+        schema:
+          type: string
+          enum:
+          - Global
+          - US
+          default: US
+      responses:
+        '200':
+          description: Sea level trend data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeaLevelTrend'
+      tags:
+      - Sealvltrends
+components:
+  schemas:
+    SeaLevelTrend:
+      type: object
+      properties:
+        stationId:
+          type: string
+          description: Station ID
+          example: '9414290'
+        stationName:
+          type: string
+          description: Station name
+          example: San Francisco
+        trend:
+          type: number
+          format: double
+          description: Sea level trend rate (mm/year)
+          example: 1.94
+        ci95:
+          type: number
+          format: double
+          description: 95% confidence interval (mm/year)
+          example: 0.19
+        startYear:
+          type: integer
+          description: First year of record used
+          example: 1897
+        endYear:
+          type: integer
+          description: Last year of record used
+          example: 2022

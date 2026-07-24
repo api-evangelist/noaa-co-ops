@@ -1,0 +1,81 @@
+openapi: 3.0.3
+info:
+  title: NOAA CO-OPS Data Retrieval Benchmarks Extremewaterlevels API
+  description: Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.
+  version: 1.0.0
+  contact:
+    name: CO-OPS User Services
+    email: co-ops.userservices@noaa.gov
+  license:
+    name: Public Domain
+    url: https://www.noaa.gov/disclaimer
+servers:
+- url: https://api.tidesandcurrents.noaa.gov/api/prod
+  description: NOAA CO-OPS Data Retrieval API
+tags:
+- name: Extremewaterlevels
+paths:
+  /extremewaterlevels:
+    get:
+      operationId: getExtremeWaterLevels
+      summary: Get extreme water levels
+      description: Returns statistically computed extreme (annual or monthly) high and low water levels for a station.
+      parameters:
+      - name: station
+        in: query
+        required: true
+        description: 7-digit station ID.
+        schema:
+          type: string
+          example: '9414290'
+      - name: units
+        in: query
+        required: false
+        description: Unit system for returned values.
+        schema:
+          type: string
+          enum:
+          - english
+          - metric
+          default: metric
+      - name: extremeType
+        in: query
+        required: false
+        description: Whether to return annual or monthly extremes.
+        schema:
+          type: string
+          enum:
+          - annuals
+          - monthlies
+      - name: levelType
+        in: query
+        required: false
+        description: Whether to return high or low extreme water levels.
+        schema:
+          type: string
+          enum:
+          - high
+          - low
+      - name: details
+        in: query
+        required: false
+        description: Additional detail to include in response.
+        schema:
+          type: string
+          enum:
+          - exceedancelevels
+          - exceedancelevelsmonth
+      responses:
+        '200':
+          description: Extreme water level statistics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+      tags:
+      - Extremewaterlevels

@@ -1,0 +1,174 @@
+openapi: 3.0.3
+info:
+  title: NOAA CO-OPS Data Retrieval Benchmarks Stations API
+  description: Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.
+  version: 1.0.0
+  contact:
+    name: CO-OPS User Services
+    email: co-ops.userservices@noaa.gov
+  license:
+    name: Public Domain
+    url: https://www.noaa.gov/disclaimer
+servers:
+- url: https://api.tidesandcurrents.noaa.gov/api/prod
+  description: NOAA CO-OPS Data Retrieval API
+tags:
+- name: Stations
+  description: NOAA CO-OPS station metadata, sensors, datums, and configuration
+paths:
+  /stations/{stationId}.json:
+    get:
+      operationId: getStation
+      summary: Get a single station
+      description: Returns metadata for a single NOAA CO-OPS monitoring station by station ID.
+      parameters:
+      - name: stationId
+        in: path
+        required: true
+        description: 7-digit station identifier (e.g., 9414290) or currents station code.
+        schema:
+          type: string
+          example: '9414290'
+      - name: units
+        in: query
+        required: false
+        description: Unit system for returned values.
+        schema:
+          type: string
+          enum:
+          - english
+          - metric
+          default: metric
+      - name: expand
+        in: query
+        required: false
+        description: Comma-separated list of sub-resources to embed.
+        schema:
+          type: string
+          example: details,sensors,datums,notices
+      responses:
+        '200':
+          description: Station metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StationResponse'
+        '404':
+          description: Station not found
+      tags:
+      - Stations
+  /stations/{stationId}/{resource}.json:
+    get:
+      operationId: getStationResource
+      summary: Get a station sub-resource
+      description: Returns a specific sub-resource (datums, benchmarks, harmonic constituents, sensors, etc.) for a given station.
+      parameters:
+      - name: stationId
+        in: path
+        required: true
+        description: 7-digit station identifier.
+        schema:
+          type: string
+          example: '9414290'
+      - name: resource
+        in: path
+        required: true
+        description: The sub-resource type to retrieve.
+        schema:
+          type: string
+          enum:
+          - datums
+          - supersededdatums
+          - harcon
+          - sensors
+          - details
+          - notices
+          - disclaimers
+          - benchmarks
+          - tidepredoffsets
+          - floodlevels
+          - bins
+          - deployments
+          - currentpredictionoffsets
+      - name: units
+        in: query
+        required: false
+        description: Unit system for returned values.
+        schema:
+          type: string
+          enum:
+          - english
+          - metric
+          default: metric
+      - name: bin
+        in: query
+        required: false
+        description: Specific bin number for current harmonic constituents.
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: Station sub-resource data
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Resource-specific response object
+        '404':
+          description: Station or resource not found
+      tags:
+      - Stations
+components:
+  schemas:
+    Station:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Station ID
+          example: '9414290'
+        name:
+          type: string
+          description: Station name
+          example: San Francisco
+        lat:
+          type: number
+          format: double
+          description: Station latitude in decimal degrees
+          example: 37.8063
+        lng:
+          type: number
+          format: double
+          description: Station longitude in decimal degrees
+          example: -122.4659
+        affiliation:
+          type: string
+          description: Organization affiliation
+          example: NWLON
+        portscode:
+          type: string
+          description: PORTS system code if applicable
+          example: sf
+        products:
+          type: object
+          description: Available data products at this station
+        disclaimers:
+          type: array
+          items:
+            type: object
+        notices:
+          type: array
+          items:
+            type: object
+        self:
+          type: string
+          description: URL of this station resource
+          example: https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json
+    StationResponse:
+      type: object
+      properties:
+        stations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Station'

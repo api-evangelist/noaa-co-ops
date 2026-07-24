@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: NOAA CO-OPS Data Retrieval Benchmarks Peakwaterlevels API
+  description: Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.
+  version: 1.0.0
+  contact:
+    name: CO-OPS User Services
+    email: co-ops.userservices@noaa.gov
+  license:
+    name: Public Domain
+    url: https://www.noaa.gov/disclaimer
+servers:
+- url: https://api.tidesandcurrents.noaa.gov/api/prod
+  description: NOAA CO-OPS Data Retrieval API
+tags:
+- name: Peakwaterlevels
+paths:
+  /peakwaterlevels:
+    get:
+      operationId: getPeakWaterLevels
+      summary: Get peak water levels by event
+      description: Returns peak water levels for a specific storm or event.
+      parameters:
+      - name: eventid
+        in: query
+        required: true
+        description: Numerical event identifier.
+        schema:
+          type: integer
+          example: 1
+      - name: units
+        in: query
+        required: false
+        description: Unit system for returned values.
+        schema:
+          type: string
+          enum:
+          - english
+          - metric
+          default: metric
+      - name: datum
+        in: query
+        required: false
+        description: Vertical datum for water level values.
+        schema:
+          type: string
+          enum:
+          - STND
+          - MHHW
+          - MHW
+          - MSL
+          - MTL
+          - MLW
+          - MLLW
+          - NAVD
+          - IGLD
+          - LWD
+      responses:
+        '200':
+          description: Peak water level data for the specified event
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WaterLevelEvent'
+      tags:
+      - Peakwaterlevels
+components:
+  schemas:
+    WaterLevelEvent:
+      type: object
+      properties:
+        rank:
+          type: integer
+          description: Rank of this event (1 = highest)
+          example: 1
+        date:
+          type: string
+          description: Date of the event
+          example: '1982-12-21'
+        level:
+          type: number
+          format: double
+          description: Water level value
+          example: 2.34
+        units:
+          type: string
+          description: Unit of measurement
+          example: m

@@ -1,0 +1,59 @@
+openapi: 3.0.3
+info:
+  title: NOAA CO-OPS Data Retrieval Benchmarks API
+  description: Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.
+  version: 1.0.0
+  contact:
+    name: CO-OPS User Services
+    email: co-ops.userservices@noaa.gov
+  license:
+    name: Public Domain
+    url: https://www.noaa.gov/disclaimer
+servers:
+- url: https://api.tidesandcurrents.noaa.gov/api/prod
+  description: NOAA CO-OPS Data Retrieval API
+tags:
+- name: Benchmarks
+paths:
+  /benchmarks:
+    get:
+      operationId: getBenchmarks
+      summary: Get benchmark data
+      description: Returns geodetic benchmark data for a specified survey mark.
+      parameters:
+      - name: vm
+        in: query
+        required: false
+        description: 4-digit vertical monument code.
+        schema:
+          type: string
+          example: '1234'
+      - name: pid
+        in: query
+        required: false
+        description: Permanent identifier for a benchmark mark (2 letters + 4 digits).
+        schema:
+          type: string
+          example: AB1234
+      - name: date
+        in: query
+        required: false
+        description: Date of benchmark survey (YYYY-MM-DD).
+        schema:
+          type: string
+          format: date
+          example: '2020-01-01'
+      responses:
+        '200':
+          description: Benchmark data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+      tags:
+      - Benchmarks

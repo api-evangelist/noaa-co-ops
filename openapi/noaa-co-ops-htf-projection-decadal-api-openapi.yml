@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: NOAA CO-OPS Data Retrieval Benchmarks Htf Projection Decadal API
+  description: Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.
+  version: 1.0.0
+  contact:
+    name: CO-OPS User Services
+    email: co-ops.userservices@noaa.gov
+  license:
+    name: Public Domain
+    url: https://www.noaa.gov/disclaimer
+servers:
+- url: https://api.tidesandcurrents.noaa.gov/api/prod
+  description: NOAA CO-OPS Data Retrieval API
+tags:
+- name: Htf Projection Decadal
+paths:
+  /htf_projection_decadal:
+    get:
+      operationId: getHighTideFloodingProjectionDecadal
+      summary: Get decadal high tide flooding projections
+      description: Returns projected number of high tide flooding days per decade for a station under different flood thresholds.
+      parameters:
+      - name: station
+        in: query
+        required: true
+        description: 7-digit station ID.
+        schema:
+          type: string
+          example: '9414290'
+      - name: decade
+        in: query
+        required: false
+        description: Target decade (e.g., 2030, 2040).
+        schema:
+          type: integer
+          example: 2030
+      - name: range
+        in: query
+        required: false
+        description: Number of decades to project.
+        schema:
+          type: integer
+          example: 3
+      - name: flood_threshold
+        in: query
+        required: false
+        description: Flood severity threshold to apply.
+        schema:
+          type: string
+          enum:
+          - minor
+          - moderate
+          - major
+      responses:
+        '200':
+          description: Decadal high tide flooding projections
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HighTideFloodingResponse'
+      tags:
+      - Htf Projection Decadal
+components:
+  schemas:
+    HighTideFloodingResponse:
+      type: object
+      properties:
+        stationId:
+          type: string
+          description: Station ID
+          example: '9414290'
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              year:
+                type: integer
+                description: Year of the flooding data
+                example: 2022
+              minor:
+                type: number
+                description: Number of minor flood days
+                example: 4
+              moderate:
+                type: number
+                description: Number of moderate flood days
+                example: 1
+              major:
+                type: number
+                description: Number of major flood days
+                example: 0

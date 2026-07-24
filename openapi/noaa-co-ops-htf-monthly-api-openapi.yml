@@ -1,0 +1,85 @@
+openapi: 3.0.3
+info:
+  title: NOAA CO-OPS Data Retrieval Benchmarks Htf Monthly API
+  description: Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.
+  version: 1.0.0
+  contact:
+    name: CO-OPS User Services
+    email: co-ops.userservices@noaa.gov
+  license:
+    name: Public Domain
+    url: https://www.noaa.gov/disclaimer
+servers:
+- url: https://api.tidesandcurrents.noaa.gov/api/prod
+  description: NOAA CO-OPS Data Retrieval API
+tags:
+- name: Htf Monthly
+paths:
+  /htf_monthly:
+    get:
+      operationId: getHighTideFloodingMonthly
+      summary: Get monthly high tide flooding statistics
+      description: Returns monthly high tide flooding day counts for a given station.
+      parameters:
+      - name: station
+        in: query
+        required: true
+        description: 7-digit station ID.
+        schema:
+          type: string
+          example: '9414290'
+      - name: year
+        in: query
+        required: false
+        description: Year (YYYY).
+        schema:
+          type: integer
+          example: 2022
+      - name: month
+        in: query
+        required: false
+        description: Month number (1-12).
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 12
+          example: 6
+      responses:
+        '200':
+          description: Monthly high tide flooding data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HighTideFloodingResponse'
+      tags:
+      - Htf Monthly
+components:
+  schemas:
+    HighTideFloodingResponse:
+      type: object
+      properties:
+        stationId:
+          type: string
+          description: Station ID
+          example: '9414290'
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              year:
+                type: integer
+                description: Year of the flooding data
+                example: 2022
+              minor:
+                type: number
+                description: Number of minor flood days
+                example: 4
+              moderate:
+                type: number
+                description: Number of moderate flood days
+                example: 1
+              major:
+                type: number
+                description: Number of major flood days
+                example: 0

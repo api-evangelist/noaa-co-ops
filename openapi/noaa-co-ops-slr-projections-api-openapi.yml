@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  title: NOAA CO-OPS Data Retrieval Benchmarks Slr Projections API
+  description: Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.
+  version: 1.0.0
+  contact:
+    name: CO-OPS User Services
+    email: co-ops.userservices@noaa.gov
+  license:
+    name: Public Domain
+    url: https://www.noaa.gov/disclaimer
+servers:
+- url: https://api.tidesandcurrents.noaa.gov/api/prod
+  description: NOAA CO-OPS Data Retrieval API
+tags:
+- name: Slr Projections
+paths:
+  /slr_projections:
+    get:
+      operationId: getSeaLevelRiseProjections
+      summary: Get sea level rise projections
+      description: Returns future sea level rise projections for a station or geographic area based on NOAA scenarios.
+      parameters:
+      - name: station
+        in: query
+        required: false
+        description: 7-digit station ID.
+        schema:
+          type: string
+          example: '9414290'
+      - name: affiliation
+        in: query
+        required: false
+        description: Station affiliation.
+        schema:
+          type: string
+          enum:
+          - Global
+          - US
+      - name: projection_year
+        in: query
+        required: false
+        description: Target projection year (e.g., 2050, 2100).
+        schema:
+          type: integer
+          example: 2050
+      - name: scenario
+        in: query
+        required: false
+        description: Sea level rise scenario.
+        schema:
+          type: string
+          enum:
+          - low
+          - intermediate-low
+          - intermediate
+          - intermediate-high
+          - high
+          - extreme
+      - name: lat
+        in: query
+        required: false
+        description: Latitude for geographic bounding queries.
+        schema:
+          type: number
+          format: double
+      - name: lon
+        in: query
+        required: false
+        description: Longitude for geographic bounding queries.
+        schema:
+          type: number
+          format: double
+      - name: min_lat
+        in: query
+        required: false
+        description: Minimum latitude for bounding box search.
+        schema:
+          type: number
+          format: double
+      - name: max_lat
+        in: query
+        required: false
+        description: Maximum latitude for bounding box search.
+        schema:
+          type: number
+          format: double
+      - name: min_lon
+        in: query
+        required: false
+        description: Minimum longitude for bounding box search.
+        schema:
+          type: number
+          format: double
+      - name: max_lon
+        in: query
+        required: false
+        description: Maximum longitude for bounding box search.
+        schema:
+          type: number
+          format: double
+      responses:
+        '200':
+          description: Sea level rise projections
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+      tags:
+      - Slr Projections
