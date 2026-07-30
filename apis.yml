@@ -1,5 +1,16 @@
 name: NOAA CO-OPS
 description: NOAA Center for Operational Oceanographic Products and Services (CO-OPS) provides REST APIs for tides and currents predictions, observed water levels, meteorological data (wind, barometric pressure, air and water temperature), and oceanographic products. The APIs serve real-time and historical data from NOAA observation stations across the United States coastline and Great Lakes.
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
 image: https://tidesandcurrents.noaa.gov/images/noaa-logo.png
 url: https://tidesandcurrents.noaa.gov/
 tags:
@@ -15,75 +26,215 @@ created: "2026-06-13"
 modified: "2026-06-13"
 specificationVersion: "0.19"
 apis:
-  - name: CO-OPS Data Retrieval API
-    description: Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.
-    image: https://tidesandcurrents.noaa.gov/images/noaa-logo.png
-    humanURL: https://tidesandcurrents.noaa.gov/api/
-    baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
-    tags:
-      - Water Level
-      - Tides
-      - Currents
-      - Meteorological
-      - Predictions
-      - Observations
-    properties:
-      - type: Documentation
-        url: https://tidesandcurrents.noaa.gov/api/
-      - type: OpenAPI
-        url: /openapi/data-retrieval-api.json
-    contact:
-      - FN: CO-OPS User Services
-        email: co-ops.userservices@noaa.gov
-    x-products:
-      - name: Free
-        url: /plans/free.md
-    x-rate-limits:
-      - url: /rate-limits/rate-limits.md
-    x-finops:
-      - url: /finops/finops.md
-
-  - name: CO-OPS Metadata API
-    description: Provides access to metadata for NOAA CO-OPS monitoring stations, including station locations, sensor configurations, harmonic constituents, datums, benchmark data, flood levels, and tide prediction offsets.
-    image: https://tidesandcurrents.noaa.gov/images/noaa-logo.png
-    humanURL: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
-    baseURL: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
-    tags:
-      - Metadata
-      - Stations
-      - Datums
-      - Benchmarks
-      - Harmonic Constituents
-    properties:
-      - type: Documentation
-        url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
-      - type: OpenAPI
-        url: /openapi/metadata-api.json
-    contact:
-      - FN: CO-OPS User Services
-        email: co-ops.userservices@noaa.gov
-
-  - name: CO-OPS Derived Product API
-    description: Provides derived oceanographic products computed from CO-OPS observational data, including sea level trends, sea level rise projections, high tide flooding statistics and projections, extreme water levels, peak water levels, and benchmark data.
-    image: https://tidesandcurrents.noaa.gov/images/noaa-logo.png
-    humanURL: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
-    baseURL: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
-    tags:
-      - Sea Level
-      - Flooding
-      - Trends
-      - Projections
-      - Extreme Water Levels
-      - High Tide Flooding
-    properties:
-      - type: Documentation
-        url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
-      - type: OpenAPI
-        url: /openapi/derived-product-api.json
-    contact:
-      - FN: Tide Predictions
-        email: tide.predictions@noaa.gov
-
+- aid: noaa-co-ops:noaa-co-ops-benchmarks-api
+  name: NOAA CO-OPS Benchmarks API
+  description: The Benchmarks API from NOAA CO-OPS — 1 operation(s) for benchmarks.
+  humanURL: https://tidesandcurrents.noaa.gov/api/
+  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+  tags:
+  - Benchmarks
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-co-ops-benchmarks-api-openapi.yml
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/api/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+- aid: noaa-co-ops:noaa-co-ops-datagetter-api
+  name: NOAA CO-OPS Datagetter API
+  description: The Datagetter API from NOAA CO-OPS — 1 operation(s) for datagetter.
+  humanURL: https://tidesandcurrents.noaa.gov/api/
+  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+  tags:
+  - Datagetter
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-co-ops-datagetter-api-openapi.yml
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/api/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+- aid: noaa-co-ops:noaa-co-ops-extremewaterlevels-api
+  name: NOAA CO-OPS Extremewaterlevels API
+  description: The Extremewaterlevels API from NOAA CO-OPS — 1 operation(s) for extremewaterlevels.
+  humanURL: https://tidesandcurrents.noaa.gov/api/
+  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+  tags:
+  - Extremewaterlevels
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-co-ops-extremewaterlevels-api-openapi.yml
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/api/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+- aid: noaa-co-ops:noaa-co-ops-htf-annual-api
+  name: NOAA CO-OPS Htf Annual API
+  description: The Htf Annual API from NOAA CO-OPS — 1 operation(s) for htf annual.
+  humanURL: https://tidesandcurrents.noaa.gov/api/
+  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+  tags:
+  - Htf Annual
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-co-ops-htf-annual-api-openapi.yml
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/api/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+- aid: noaa-co-ops:noaa-co-ops-htf-monthly-api
+  name: NOAA CO-OPS Htf Monthly API
+  description: The Htf Monthly API from NOAA CO-OPS — 1 operation(s) for htf monthly.
+  humanURL: https://tidesandcurrents.noaa.gov/api/
+  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+  tags:
+  - Htf Monthly
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-co-ops-htf-monthly-api-openapi.yml
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/api/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+- aid: noaa-co-ops:noaa-co-ops-htf-projection-decadal-api
+  name: NOAA CO-OPS Htf Projection Decadal API
+  description: >-
+    The Htf Projection Decadal API from NOAA CO-OPS — 1 operation(s) for htf projection decadal.
+  humanURL: https://tidesandcurrents.noaa.gov/api/
+  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+  tags:
+  - Htf Projection Decadal
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-co-ops-htf-projection-decadal-api-openapi.yml
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/api/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+- aid: noaa-co-ops:noaa-co-ops-peakwaterlevels-api
+  name: NOAA CO-OPS Peakwaterlevels API
+  description: The Peakwaterlevels API from NOAA CO-OPS — 1 operation(s) for peakwaterlevels.
+  humanURL: https://tidesandcurrents.noaa.gov/api/
+  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+  tags:
+  - Peakwaterlevels
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-co-ops-peakwaterlevels-api-openapi.yml
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/api/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+- aid: noaa-co-ops:noaa-co-ops-ports-json-api
+  name: NOAA CO-OPS Ports.json API
+  description: The Ports.json API from NOAA CO-OPS — 1 operation(s) for ports.json.
+  humanURL: https://tidesandcurrents.noaa.gov/api/
+  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+  tags:
+  - Ports.json
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-co-ops-ports-json-api-openapi.yml
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/api/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+- aid: noaa-co-ops:noaa-co-ops-sealvltrends-api
+  name: NOAA CO-OPS Sealvltrends API
+  description: The Sealvltrends API from NOAA CO-OPS — 1 operation(s) for sealvltrends.
+  humanURL: https://tidesandcurrents.noaa.gov/api/
+  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+  tags:
+  - Sealvltrends
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-co-ops-sealvltrends-api-openapi.yml
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/api/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+- aid: noaa-co-ops:noaa-co-ops-slr-projections-api
+  name: NOAA CO-OPS Slr Projections API
+  description: The Slr Projections API from NOAA CO-OPS — 1 operation(s) for slr projections.
+  humanURL: https://tidesandcurrents.noaa.gov/api/
+  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+  tags:
+  - Slr Projections
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-co-ops-slr-projections-api-openapi.yml
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/api/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+- aid: noaa-co-ops:noaa-co-ops-stations-api
+  name: NOAA CO-OPS Stations API
+  description: NOAA CO-OPS station metadata, sensors, datums, and configuration
+  humanURL: https://tidesandcurrents.noaa.gov/api/
+  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+  tags:
+  - Stations
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-co-ops-stations-api-openapi.yml
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/api/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+- aid: noaa-co-ops:noaa-co-ops-stations-json-api
+  name: NOAA CO-OPS Stations.json API
+  description: The Stations.json API from NOAA CO-OPS — 1 operation(s) for stations.json.
+  humanURL: https://tidesandcurrents.noaa.gov/api/
+  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+  tags:
+  - Stations.json
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-co-ops-stations-json-api-openapi.yml
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/api/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
+- aid: noaa-co-ops:noaa-co-ops-toptenwaterlevels-api
+  name: NOAA CO-OPS Toptenwaterlevels API
+  description: The Toptenwaterlevels API from NOAA CO-OPS — 1 operation(s) for toptenwaterlevels.
+  humanURL: https://tidesandcurrents.noaa.gov/api/
+  baseURL: https://api.tidesandcurrents.noaa.gov/api/prod/
+  tags:
+  - Toptenwaterlevels
+  properties:
+  - type: OpenAPI
+    url: openapi/noaa-co-ops-toptenwaterlevels-api-openapi.yml
+  - type: Documentation
+    url: https://tidesandcurrents.noaa.gov/api/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/
+  - type: Documentation
+    url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
 common:
   - type: AgenticAccess
     url: agentic-access/noaa-co-ops-agentic-access.yml
