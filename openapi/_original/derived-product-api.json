@@ -1,0 +1,767 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "NOAA CO-OPS Derived Product API",
+    "description": "Provides derived oceanographic products computed from CO-OPS observational data, including sea level trends, sea level rise projections, high tide flooding statistics and projections, extreme water levels, peak water levels, and benchmark data.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Tide Predictions",
+      "email": "tide.predictions@noaa.gov"
+    },
+    "license": {
+      "name": "Public Domain",
+      "url": "https://www.noaa.gov/disclaimer"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi",
+      "description": "NOAA CO-OPS Derived Product API"
+    }
+  ],
+  "paths": {
+    "/toptenwaterlevels": {
+      "get": {
+        "operationId": "getTopTenWaterLevels",
+        "summary": "Get top ten water levels",
+        "description": "Returns the top ten highest recorded water levels for a given station.",
+        "parameters": [
+          {
+            "name": "station",
+            "in": "query",
+            "required": true,
+            "description": "7-digit station ID.",
+            "schema": {
+              "type": "string",
+              "example": "9414290"
+            }
+          },
+          {
+            "name": "units",
+            "in": "query",
+            "required": false,
+            "description": "Unit system for returned values.",
+            "schema": {
+              "type": "string",
+              "enum": ["english", "metric"],
+              "default": "metric"
+            }
+          },
+          {
+            "name": "datum",
+            "in": "query",
+            "required": false,
+            "description": "Vertical datum for water level values.",
+            "schema": {
+              "type": "string",
+              "enum": ["STND", "MHHW", "MHW", "MSL", "MTL", "MLW", "MLLW", "NAVD", "IGLD", "LWD"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top ten water level events",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/WaterLevelEvent"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/peakwaterlevels": {
+      "get": {
+        "operationId": "getPeakWaterLevels",
+        "summary": "Get peak water levels by event",
+        "description": "Returns peak water levels for a specific storm or event.",
+        "parameters": [
+          {
+            "name": "eventid",
+            "in": "query",
+            "required": true,
+            "description": "Numerical event identifier.",
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          },
+          {
+            "name": "units",
+            "in": "query",
+            "required": false,
+            "description": "Unit system for returned values.",
+            "schema": {
+              "type": "string",
+              "enum": ["english", "metric"],
+              "default": "metric"
+            }
+          },
+          {
+            "name": "datum",
+            "in": "query",
+            "required": false,
+            "description": "Vertical datum for water level values.",
+            "schema": {
+              "type": "string",
+              "enum": ["STND", "MHHW", "MHW", "MSL", "MTL", "MLW", "MLLW", "NAVD", "IGLD", "LWD"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Peak water level data for the specified event",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/WaterLevelEvent"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/extremewaterlevels": {
+      "get": {
+        "operationId": "getExtremeWaterLevels",
+        "summary": "Get extreme water levels",
+        "description": "Returns statistically computed extreme (annual or monthly) high and low water levels for a station.",
+        "parameters": [
+          {
+            "name": "station",
+            "in": "query",
+            "required": true,
+            "description": "7-digit station ID.",
+            "schema": {
+              "type": "string",
+              "example": "9414290"
+            }
+          },
+          {
+            "name": "units",
+            "in": "query",
+            "required": false,
+            "description": "Unit system for returned values.",
+            "schema": {
+              "type": "string",
+              "enum": ["english", "metric"],
+              "default": "metric"
+            }
+          },
+          {
+            "name": "extremeType",
+            "in": "query",
+            "required": false,
+            "description": "Whether to return annual or monthly extremes.",
+            "schema": {
+              "type": "string",
+              "enum": ["annuals", "monthlies"]
+            }
+          },
+          {
+            "name": "levelType",
+            "in": "query",
+            "required": false,
+            "description": "Whether to return high or low extreme water levels.",
+            "schema": {
+              "type": "string",
+              "enum": ["high", "low"]
+            }
+          },
+          {
+            "name": "details",
+            "in": "query",
+            "required": false,
+            "description": "Additional detail to include in response.",
+            "schema": {
+              "type": "string",
+              "enum": ["exceedancelevels", "exceedancelevelsmonth"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Extreme water level statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sealvltrends": {
+      "get": {
+        "operationId": "getSeaLevelTrends",
+        "summary": "Get sea level trends",
+        "description": "Returns mean sea level trend data for a given station, including rate of change and confidence intervals.",
+        "parameters": [
+          {
+            "name": "station",
+            "in": "query",
+            "required": true,
+            "description": "7-digit station ID.",
+            "schema": {
+              "type": "string",
+              "example": "9414290"
+            }
+          },
+          {
+            "name": "affiliation",
+            "in": "query",
+            "required": false,
+            "description": "Station affiliation context.",
+            "schema": {
+              "type": "string",
+              "enum": ["Global", "US"],
+              "default": "US"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sea level trend data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeaLevelTrend"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/slr_projections": {
+      "get": {
+        "operationId": "getSeaLevelRiseProjections",
+        "summary": "Get sea level rise projections",
+        "description": "Returns future sea level rise projections for a station or geographic area based on NOAA scenarios.",
+        "parameters": [
+          {
+            "name": "station",
+            "in": "query",
+            "required": false,
+            "description": "7-digit station ID.",
+            "schema": {
+              "type": "string",
+              "example": "9414290"
+            }
+          },
+          {
+            "name": "affiliation",
+            "in": "query",
+            "required": false,
+            "description": "Station affiliation.",
+            "schema": {
+              "type": "string",
+              "enum": ["Global", "US"]
+            }
+          },
+          {
+            "name": "projection_year",
+            "in": "query",
+            "required": false,
+            "description": "Target projection year (e.g., 2050, 2100).",
+            "schema": {
+              "type": "integer",
+              "example": 2050
+            }
+          },
+          {
+            "name": "scenario",
+            "in": "query",
+            "required": false,
+            "description": "Sea level rise scenario.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "low",
+                "intermediate-low",
+                "intermediate",
+                "intermediate-high",
+                "high",
+                "extreme"
+              ]
+            }
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "required": false,
+            "description": "Latitude for geographic bounding queries.",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "lon",
+            "in": "query",
+            "required": false,
+            "description": "Longitude for geographic bounding queries.",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "min_lat",
+            "in": "query",
+            "required": false,
+            "description": "Minimum latitude for bounding box search.",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "max_lat",
+            "in": "query",
+            "required": false,
+            "description": "Maximum latitude for bounding box search.",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "min_lon",
+            "in": "query",
+            "required": false,
+            "description": "Minimum longitude for bounding box search.",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "max_lon",
+            "in": "query",
+            "required": false,
+            "description": "Maximum longitude for bounding box search.",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sea level rise projections",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/htf_annual": {
+      "get": {
+        "operationId": "getHighTideFloodingAnnual",
+        "summary": "Get annual high tide flooding statistics",
+        "description": "Returns annual high tide flooding day counts and flood threshold exceedances for a given station.",
+        "parameters": [
+          {
+            "name": "station",
+            "in": "query",
+            "required": true,
+            "description": "7-digit station ID.",
+            "schema": {
+              "type": "string",
+              "example": "9414290"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "description": "Specific year to retrieve (YYYY).",
+            "schema": {
+              "type": "integer",
+              "example": 2022
+            }
+          },
+          {
+            "name": "range",
+            "in": "query",
+            "required": false,
+            "description": "Number of years to include.",
+            "schema": {
+              "type": "integer",
+              "example": 5
+            }
+          },
+          {
+            "name": "units",
+            "in": "query",
+            "required": false,
+            "description": "Unit system for returned values.",
+            "schema": {
+              "type": "string",
+              "enum": ["english", "metric"],
+              "default": "metric"
+            }
+          },
+          {
+            "name": "datum",
+            "in": "query",
+            "required": false,
+            "description": "Vertical datum for water level values.",
+            "schema": {
+              "type": "string",
+              "enum": ["MHHW", "MHW", "MSL", "MLLW", "NAVD"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Annual high tide flooding statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HighTideFloodingResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/htf_monthly": {
+      "get": {
+        "operationId": "getHighTideFloodingMonthly",
+        "summary": "Get monthly high tide flooding statistics",
+        "description": "Returns monthly high tide flooding day counts for a given station.",
+        "parameters": [
+          {
+            "name": "station",
+            "in": "query",
+            "required": true,
+            "description": "7-digit station ID.",
+            "schema": {
+              "type": "string",
+              "example": "9414290"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "description": "Year (YYYY).",
+            "schema": {
+              "type": "integer",
+              "example": 2022
+            }
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "required": false,
+            "description": "Month number (1-12).",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 12,
+              "example": 6
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Monthly high tide flooding data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HighTideFloodingResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/htf_projection_decadal": {
+      "get": {
+        "operationId": "getHighTideFloodingProjectionDecadal",
+        "summary": "Get decadal high tide flooding projections",
+        "description": "Returns projected number of high tide flooding days per decade for a station under different flood thresholds.",
+        "parameters": [
+          {
+            "name": "station",
+            "in": "query",
+            "required": true,
+            "description": "7-digit station ID.",
+            "schema": {
+              "type": "string",
+              "example": "9414290"
+            }
+          },
+          {
+            "name": "decade",
+            "in": "query",
+            "required": false,
+            "description": "Target decade (e.g., 2030, 2040).",
+            "schema": {
+              "type": "integer",
+              "example": 2030
+            }
+          },
+          {
+            "name": "range",
+            "in": "query",
+            "required": false,
+            "description": "Number of decades to project.",
+            "schema": {
+              "type": "integer",
+              "example": 3
+            }
+          },
+          {
+            "name": "flood_threshold",
+            "in": "query",
+            "required": false,
+            "description": "Flood severity threshold to apply.",
+            "schema": {
+              "type": "string",
+              "enum": ["minor", "moderate", "major"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Decadal high tide flooding projections",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HighTideFloodingResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/benchmarks": {
+      "get": {
+        "operationId": "getBenchmarks",
+        "summary": "Get benchmark data",
+        "description": "Returns geodetic benchmark data for a specified survey mark.",
+        "parameters": [
+          {
+            "name": "vm",
+            "in": "query",
+            "required": false,
+            "description": "4-digit vertical monument code.",
+            "schema": {
+              "type": "string",
+              "example": "1234"
+            }
+          },
+          {
+            "name": "pid",
+            "in": "query",
+            "required": false,
+            "description": "Permanent identifier for a benchmark mark (2 letters + 4 digits).",
+            "schema": {
+              "type": "string",
+              "example": "AB1234"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "required": false,
+            "description": "Date of benchmark survey (YYYY-MM-DD).",
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2020-01-01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Benchmark data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WaterLevelEvent": {
+        "type": "object",
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "description": "Rank of this event (1 = highest)",
+            "example": 1
+          },
+          "date": {
+            "type": "string",
+            "description": "Date of the event",
+            "example": "1982-12-21"
+          },
+          "level": {
+            "type": "number",
+            "format": "double",
+            "description": "Water level value",
+            "example": 2.34
+          },
+          "units": {
+            "type": "string",
+            "description": "Unit of measurement",
+            "example": "m"
+          }
+        }
+      },
+      "SeaLevelTrend": {
+        "type": "object",
+        "properties": {
+          "stationId": {
+            "type": "string",
+            "description": "Station ID",
+            "example": "9414290"
+          },
+          "stationName": {
+            "type": "string",
+            "description": "Station name",
+            "example": "San Francisco"
+          },
+          "trend": {
+            "type": "number",
+            "format": "double",
+            "description": "Sea level trend rate (mm/year)",
+            "example": 1.94
+          },
+          "ci95": {
+            "type": "number",
+            "format": "double",
+            "description": "95% confidence interval (mm/year)",
+            "example": 0.19
+          },
+          "startYear": {
+            "type": "integer",
+            "description": "First year of record used",
+            "example": 1897
+          },
+          "endYear": {
+            "type": "integer",
+            "description": "Last year of record used",
+            "example": 2022
+          }
+        }
+      },
+      "HighTideFloodingResponse": {
+        "type": "object",
+        "properties": {
+          "stationId": {
+            "type": "string",
+            "description": "Station ID",
+            "example": "9414290"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "year": {
+                  "type": "integer",
+                  "description": "Year of the flooding data",
+                  "example": 2022
+                },
+                "minor": {
+                  "type": "number",
+                  "description": "Number of minor flood days",
+                  "example": 4
+                },
+                "moderate": {
+                  "type": "number",
+                  "description": "Number of moderate flood days",
+                  "example": 1
+                },
+                "major": {
+                  "type": "number",
+                  "description": "Number of major flood days",
+                  "example": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Sea Level",
+      "description": "Sea level trends and projections"
+    },
+    {
+      "name": "High Tide Flooding",
+      "description": "High tide flooding statistics and projections"
+    },
+    {
+      "name": "Extreme Water Levels",
+      "description": "Extreme and peak water level events"
+    }
+  ]
+}

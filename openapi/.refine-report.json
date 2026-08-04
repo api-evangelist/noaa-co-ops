@@ -1,0 +1,38 @@
+{
+  "provider": "noaa-co-ops",
+  "sources": [
+    "noaa-co-ops-benchmarks-api-openapi.yml",
+    "noaa-co-ops-datagetter-api-openapi.yml",
+    "noaa-co-ops-extremewaterlevels-api-openapi.yml",
+    "noaa-co-ops-htf-annual-api-openapi.yml",
+    "noaa-co-ops-htf-monthly-api-openapi.yml",
+    "noaa-co-ops-htf-projection-decadal-api-openapi.yml",
+    "noaa-co-ops-peakwaterlevels-api-openapi.yml",
+    "noaa-co-ops-ports-json-api-openapi.yml",
+    "noaa-co-ops-sealvltrends-api-openapi.yml",
+    "noaa-co-ops-slr-projections-api-openapi.yml",
+    "noaa-co-ops-stations-api-openapi.yml",
+    "noaa-co-ops-stations-json-api-openapi.yml",
+    "noaa-co-ops-toptenwaterlevels-api-openapi.yml"
+  ],
+  "outputs": [
+    "noaa-co-ops-benchmarks-api-openapi.yml",
+    "noaa-co-ops-datagetter-api-openapi.yml",
+    "noaa-co-ops-extremewaterlevels-api-openapi.yml",
+    "noaa-co-ops-htf-annual-api-openapi.yml",
+    "noaa-co-ops-htf-monthly-api-openapi.yml",
+    "noaa-co-ops-htf-projection-decadal-api-openapi.yml",
+    "noaa-co-ops-peakwaterlevels-api-openapi.yml",
+    "noaa-co-ops-ports-json-api-openapi.yml",
+    "noaa-co-ops-sealvltrends-api-openapi.yml",
+    "noaa-co-ops-slr-projections-api-openapi.yml",
+    "noaa-co-ops-stations-api-openapi.yml",
+    "noaa-co-ops-stations-json-api-openapi.yml",
+    "noaa-co-ops-toptenwaterlevels-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

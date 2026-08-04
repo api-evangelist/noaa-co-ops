@@ -1,0 +1,350 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "NOAA CO-OPS Data Retrieval API",
+    "description": "Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "CO-OPS User Services",
+      "email": "co-ops.userservices@noaa.gov"
+    },
+    "license": {
+      "name": "Public Domain",
+      "url": "https://www.noaa.gov/disclaimer"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.tidesandcurrents.noaa.gov/api/prod",
+      "description": "NOAA CO-OPS Data Retrieval API"
+    }
+  ],
+  "paths": {
+    "/datagetter": {
+      "get": {
+        "operationId": "getData",
+        "summary": "Retrieve observational or prediction data",
+        "description": "Returns tides, water levels, currents, meteorological observations, or predictions from a specified NOAA CO-OPS station for a given time range and product type.",
+        "parameters": [
+          {
+            "name": "station",
+            "in": "query",
+            "required": true,
+            "description": "7-character station ID (e.g., 9414290) or currents station code (e.g., cb1401).",
+            "schema": {
+              "type": "string",
+              "example": "9414290"
+            }
+          },
+          {
+            "name": "product",
+            "in": "query",
+            "required": true,
+            "description": "The type of data product to retrieve.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "water_level",
+                "hourly_height",
+                "high_low",
+                "daily_mean",
+                "predictions",
+                "air_gap",
+                "air_temperature",
+                "water_temperature",
+                "wind",
+                "air_pressure",
+                "conductivity",
+                "visibility",
+                "humidity",
+                "salinity",
+                "currents",
+                "currents_predictions",
+                "currents_header",
+                "ofs_water_level"
+              ]
+            }
+          },
+          {
+            "name": "begin_date",
+            "in": "query",
+            "required": false,
+            "description": "Start date for data retrieval. Format: yyyyMMdd or MM/dd/yyyy. Required unless using `date` or `range`.",
+            "schema": {
+              "type": "string",
+              "example": "20230101"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": false,
+            "description": "End date for data retrieval. Format: yyyyMMdd or MM/dd/yyyy. Required unless using `date` or `range`.",
+            "schema": {
+              "type": "string",
+              "example": "20230131"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "required": false,
+            "description": "Quick time reference shorthand. Mutually exclusive with begin_date/end_date/range.",
+            "schema": {
+              "type": "string",
+              "enum": ["today", "latest", "recent"]
+            }
+          },
+          {
+            "name": "range",
+            "in": "query",
+            "required": false,
+            "description": "Hours of data to retrieve from the current time (or from begin_date if supplied). Use `range=1` to `range=48` for sub-daily products; large values for predictions.",
+            "schema": {
+              "type": "integer",
+              "example": 24
+            }
+          },
+          {
+            "name": "datum",
+            "in": "query",
+            "required": false,
+            "description": "Vertical datum for water level data. Required for water_level and predictions products.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CRD",
+                "IGLD",
+                "LWD",
+                "MHHW",
+                "MHW",
+                "MTL",
+                "MSL",
+                "MLW",
+                "MLLW",
+                "NAVD",
+                "STND"
+              ]
+            }
+          },
+          {
+            "name": "time_zone",
+            "in": "query",
+            "required": false,
+            "description": "Time zone for returned timestamps.",
+            "schema": {
+              "type": "string",
+              "enum": ["gmt", "lst", "lst_ldt"],
+              "default": "gmt"
+            }
+          },
+          {
+            "name": "interval",
+            "in": "query",
+            "required": false,
+            "description": "Data interval. Use 'h' for hourly, or integer minutes (1, 6, 15, 30, 60). Applies to water_level and currents.",
+            "schema": {
+              "type": "string",
+              "example": "6"
+            }
+          },
+          {
+            "name": "units",
+            "in": "query",
+            "required": false,
+            "description": "Measurement unit system.",
+            "schema": {
+              "type": "string",
+              "enum": ["metric", "english"],
+              "default": "metric"
+            }
+          },
+          {
+            "name": "bin",
+            "in": "query",
+            "required": false,
+            "description": "Current depth bin number for ADCP currents data.",
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          },
+          {
+            "name": "vel_type",
+            "in": "query",
+            "required": false,
+            "description": "Current velocity output format.",
+            "schema": {
+              "type": "string",
+              "enum": ["speed_dir", "default"]
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "description": "Response format.",
+            "schema": {
+              "type": "string",
+              "enum": ["json", "xml", "csv"],
+              "default": "json"
+            }
+          },
+          {
+            "name": "application",
+            "in": "query",
+            "required": false,
+            "description": "Identifier for the calling application. Helps NOAA track usage.",
+            "schema": {
+              "type": "string",
+              "example": "MyApp"
+            }
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "description": "Include additional detail in currents response.",
+            "schema": {
+              "type": "string",
+              "enum": ["detailed"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful data response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataResponse"
+                },
+                "example": {
+                  "metadata": {
+                    "id": "9414290",
+                    "name": "San Francisco",
+                    "lat": "37.8063",
+                    "lon": "-122.4659"
+                  },
+                  "data": [
+                    {
+                      "t": "2023-01-01 00:00",
+                      "v": "1.234",
+                      "s": "0.009",
+                      "f": "0,0,0,0",
+                      "q": "v"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request — invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DataResponse": {
+        "type": "object",
+        "properties": {
+          "metadata": {
+            "$ref": "#/components/schemas/StationMetadata"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataPoint"
+            }
+          }
+        }
+      },
+      "StationMetadata": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Station ID",
+            "example": "9414290"
+          },
+          "name": {
+            "type": "string",
+            "description": "Station name",
+            "example": "San Francisco"
+          },
+          "lat": {
+            "type": "string",
+            "description": "Station latitude",
+            "example": "37.8063"
+          },
+          "lon": {
+            "type": "string",
+            "description": "Station longitude",
+            "example": "-122.4659"
+          }
+        }
+      },
+      "DataPoint": {
+        "type": "object",
+        "properties": {
+          "t": {
+            "type": "string",
+            "description": "Timestamp in YYYY-MM-DD HH:mm format",
+            "example": "2023-01-01 00:00"
+          },
+          "v": {
+            "type": "string",
+            "description": "Observed or predicted value",
+            "example": "1.234"
+          },
+          "s": {
+            "type": "string",
+            "description": "Standard deviation of the 1-second samples used to compute the 6-minute sample (water level only)",
+            "example": "0.009"
+          },
+          "f": {
+            "type": "string",
+            "description": "Data quality flags",
+            "example": "0,0,0,0"
+          },
+          "q": {
+            "type": "string",
+            "description": "Quality assurance/quality control level (v=verified, p=preliminary)",
+            "example": "v"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Human-readable error description",
+                "example": "No data was found. This product was not offered at this station at the requested time."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Data",
+      "description": "Retrieve observational and prediction data from NOAA monitoring stations"
+    }
+  ]
+}

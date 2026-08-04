@@ -1,0 +1,361 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "NOAA CO-OPS Metadata API",
+    "description": "Provides access to metadata for NOAA CO-OPS monitoring stations, including station locations, sensor configurations, harmonic constituents, datums, benchmark data, flood levels, and tide prediction offsets.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "CO-OPS User Services",
+      "email": "co-ops.userservices@noaa.gov"
+    },
+    "license": {
+      "name": "Public Domain",
+      "url": "https://www.noaa.gov/disclaimer"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi",
+      "description": "NOAA CO-OPS Metadata API"
+    }
+  ],
+  "paths": {
+    "/stations.json": {
+      "get": {
+        "operationId": "listStations",
+        "summary": "List all stations",
+        "description": "Returns a collection of all NOAA CO-OPS monitoring stations, optionally filtered by station type.",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "description": "Filter stations by data type capability.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "waterlevels",
+                "historicwl",
+                "met",
+                "waterlevelsandmet",
+                "tidepredictions",
+                "harcon",
+                "datums",
+                "supersededdatums",
+                "benchmarks",
+                "supersededbenchmarks",
+                "currents",
+                "historiccurrents",
+                "surveycurrents",
+                "currentpredictions",
+                "cond",
+                "watertemp",
+                "physocean",
+                "tcoon",
+                "1minute",
+                "airgap",
+                "visibility",
+                "highwater",
+                "lowwater"
+              ]
+            }
+          },
+          {
+            "name": "units",
+            "in": "query",
+            "required": false,
+            "description": "Unit system for returned values.",
+            "schema": {
+              "type": "string",
+              "enum": ["english", "metric"],
+              "default": "metric"
+            }
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated list of sub-resources to embed in response.",
+            "schema": {
+              "type": "string",
+              "example": "details,sensors,datums"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of stations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StationListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stations/{stationId}.json": {
+      "get": {
+        "operationId": "getStation",
+        "summary": "Get a single station",
+        "description": "Returns metadata for a single NOAA CO-OPS monitoring station by station ID.",
+        "parameters": [
+          {
+            "name": "stationId",
+            "in": "path",
+            "required": true,
+            "description": "7-digit station identifier (e.g., 9414290) or currents station code.",
+            "schema": {
+              "type": "string",
+              "example": "9414290"
+            }
+          },
+          {
+            "name": "units",
+            "in": "query",
+            "required": false,
+            "description": "Unit system for returned values.",
+            "schema": {
+              "type": "string",
+              "enum": ["english", "metric"],
+              "default": "metric"
+            }
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated list of sub-resources to embed.",
+            "schema": {
+              "type": "string",
+              "example": "details,sensors,datums,notices"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Station metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StationResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Station not found"
+          }
+        }
+      }
+    },
+    "/stations/{stationId}/{resource}.json": {
+      "get": {
+        "operationId": "getStationResource",
+        "summary": "Get a station sub-resource",
+        "description": "Returns a specific sub-resource (datums, benchmarks, harmonic constituents, sensors, etc.) for a given station.",
+        "parameters": [
+          {
+            "name": "stationId",
+            "in": "path",
+            "required": true,
+            "description": "7-digit station identifier.",
+            "schema": {
+              "type": "string",
+              "example": "9414290"
+            }
+          },
+          {
+            "name": "resource",
+            "in": "path",
+            "required": true,
+            "description": "The sub-resource type to retrieve.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "datums",
+                "supersededdatums",
+                "harcon",
+                "sensors",
+                "details",
+                "notices",
+                "disclaimers",
+                "benchmarks",
+                "tidepredoffsets",
+                "floodlevels",
+                "bins",
+                "deployments",
+                "currentpredictionoffsets"
+              ]
+            }
+          },
+          {
+            "name": "units",
+            "in": "query",
+            "required": false,
+            "description": "Unit system for returned values.",
+            "schema": {
+              "type": "string",
+              "enum": ["english", "metric"],
+              "default": "metric"
+            }
+          },
+          {
+            "name": "bin",
+            "in": "query",
+            "required": false,
+            "description": "Specific bin number for current harmonic constituents.",
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Station sub-resource data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Resource-specific response object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Station or resource not found"
+          }
+        }
+      }
+    },
+    "/ports.json": {
+      "get": {
+        "operationId": "listPorts",
+        "summary": "List PORTS stations",
+        "description": "Returns a list of Physical Oceanographic Real-Time System (PORTS) stations.",
+        "parameters": [
+          {
+            "name": "ports",
+            "in": "query",
+            "required": false,
+            "description": "PORTS code filter (e.g., cs for Chesapeake Bay).",
+            "schema": {
+              "type": "string",
+              "example": "cs"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of PORTS stations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StationListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "StationListResponse": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Number of stations returned",
+            "example": 363
+          },
+          "stations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Station"
+            }
+          }
+        }
+      },
+      "StationResponse": {
+        "type": "object",
+        "properties": {
+          "stations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Station"
+            }
+          }
+        }
+      },
+      "Station": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Station ID",
+            "example": "9414290"
+          },
+          "name": {
+            "type": "string",
+            "description": "Station name",
+            "example": "San Francisco"
+          },
+          "lat": {
+            "type": "number",
+            "format": "double",
+            "description": "Station latitude in decimal degrees",
+            "example": 37.8063
+          },
+          "lng": {
+            "type": "number",
+            "format": "double",
+            "description": "Station longitude in decimal degrees",
+            "example": -122.4659
+          },
+          "affiliation": {
+            "type": "string",
+            "description": "Organization affiliation",
+            "example": "NWLON"
+          },
+          "portscode": {
+            "type": "string",
+            "description": "PORTS system code if applicable",
+            "example": "sf"
+          },
+          "products": {
+            "type": "object",
+            "description": "Available data products at this station"
+          },
+          "disclaimers": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "notices": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "self": {
+            "type": "string",
+            "description": "URL of this station resource",
+            "example": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Stations",
+      "description": "NOAA CO-OPS station metadata, sensors, datums, and configuration"
+    }
+  ]
+}
