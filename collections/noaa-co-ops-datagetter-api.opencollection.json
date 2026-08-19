@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Datagetter API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datagetter",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve observational or prediction data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter",
+            "params": [
+              {
+                "name": "station",
+                "value": "",
+                "type": "query",
+                "description": "7-character station ID (e.g., 9414290) or currents station code (e.g., cb1401)."
+              },
+              {
+                "name": "product",
+                "value": "",
+                "type": "query",
+                "description": "The type of data product to retrieve."
+              },
+              {
+                "name": "begin_date",
+                "value": "",
+                "type": "query",
+                "description": "Start date for data retrieval. Format: yyyyMMdd or MM/dd/yyyy. Required unless using `date` or `range`."
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End date for data retrieval. Format: yyyyMMdd or MM/dd/yyyy. Required unless using `date` or `range`."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Quick time reference shorthand. Mutually exclusive with begin_date/end_date/range."
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "query",
+                "description": "Hours of data to retrieve from the current time (or from begin_date if supplied). Use `range=1` to `range=48` for sub-daily products; large values for predictions."
+              },
+              {
+                "name": "datum",
+                "value": "",
+                "type": "query",
+                "description": "Vertical datum for water level data. Required for water_level and predictions products."
+              },
+              {
+                "name": "time_zone",
+                "value": "",
+                "type": "query",
+                "description": "Time zone for returned timestamps."
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "Data interval. Use 'h' for hourly, or integer minutes (1, 6, 15, 30, 60). Applies to water_level and currents."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Measurement unit system."
+              },
+              {
+                "name": "bin",
+                "value": "",
+                "type": "query",
+                "description": "Current depth bin number for ADCP currents data."
+              },
+              {
+                "name": "vel_type",
+                "value": "",
+                "type": "query",
+                "description": "Current velocity output format."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              },
+              {
+                "name": "application",
+                "value": "",
+                "type": "query",
+                "description": "Identifier for the calling application. Helps NOAA track usage."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Include additional detail in currents response."
+              }
+            ]
+          },
+          "docs": "Returns tides, water levels, currents, meteorological observations, or predictions from a specified NOAA CO-OPS station for a given time range and product type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

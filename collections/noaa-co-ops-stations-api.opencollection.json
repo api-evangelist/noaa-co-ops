@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Stations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a single station",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidesandcurrents.noaa.gov/api/prod/stations/:stationId.json",
+            "params": [
+              {
+                "name": "stationId",
+                "value": "",
+                "type": "path",
+                "description": "7-digit station identifier (e.g., 9414290) or currents station code."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Unit system for returned values."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of sub-resources to embed."
+              }
+            ]
+          },
+          "docs": "Returns metadata for a single NOAA CO-OPS monitoring station by station ID."
+        },
+        {
+          "info": {
+            "name": "Get a station sub-resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidesandcurrents.noaa.gov/api/prod/stations/:stationId/:resource.json",
+            "params": [
+              {
+                "name": "stationId",
+                "value": "",
+                "type": "path",
+                "description": "7-digit station identifier."
+              },
+              {
+                "name": "resource",
+                "value": "",
+                "type": "path",
+                "description": "The sub-resource type to retrieve."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Unit system for returned values."
+              },
+              {
+                "name": "bin",
+                "value": "",
+                "type": "query",
+                "description": "Specific bin number for current harmonic constituents."
+              }
+            ]
+          },
+          "docs": "Returns a specific sub-resource (datums, benchmarks, harmonic constituents, sensors, etc.) for a given station."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

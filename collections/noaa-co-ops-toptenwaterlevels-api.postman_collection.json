@@ -1,0 +1,134 @@
+{
+  "item": [
+    {
+      "id": "5944aedc-d307-4a11-b284-c0c4383547dc",
+      "name": "Toptenwaterlevels",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6dbf3eef-ed1e-4160-a3d6-99b374f88ed9",
+          "name": "Get top ten water levels",
+          "request": {
+            "name": "Get top ten water levels",
+            "description": {
+              "content": "Returns the top ten highest recorded water levels for a given station.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "toptenwaterlevels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "station",
+                  "value": "<string>",
+                  "description": "(Required) 7-digit station ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "metric",
+                  "description": "Unit system for returned values."
+                },
+                {
+                  "disabled": false,
+                  "key": "datum",
+                  "value": "<string>",
+                  "description": "Vertical datum for water level values."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d9ed156c-9404-4a6f-89d2-00ec86b80a8d",
+              "name": "Top ten water level events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "toptenwaterlevels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "station",
+                      "value": "9414290"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"rank\": 1,\n      \"date\": \"1982-12-21\",\n      \"level\": 2.34,\n      \"units\": \"m\"\n    },\n    {\n      \"rank\": 1,\n      \"date\": \"1982-12-21\",\n      \"level\": 2.34,\n      \"units\": \"m\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidesandcurrents.noaa.gov/api/prod",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1f4f27c8-0cd8-4263-a1c1-651860745f88",
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Toptenwaterlevels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.\n\nContact Support:\n Name: CO-OPS User Services\n Email: co-ops.userservices@noaa.gov",
+      "type": "text/plain"
+    }
+  }
+}

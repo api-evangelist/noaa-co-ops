@@ -1,0 +1,134 @@
+{
+  "item": [
+    {
+      "id": "9bbbd79b-a475-47b3-a93b-b67d85fd31cc",
+      "name": "Htf Monthly",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fcd1f751-f3db-41e4-b4ce-335f443c105f",
+          "name": "Get monthly high tide flooding statistics",
+          "request": {
+            "name": "Get monthly high tide flooding statistics",
+            "description": {
+              "content": "Returns monthly high tide flooding day counts for a given station.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "htf_monthly"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "station",
+                  "value": "<string>",
+                  "description": "(Required) 7-digit station ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<integer>",
+                  "description": "Year (YYYY)."
+                },
+                {
+                  "disabled": false,
+                  "key": "month",
+                  "value": "<integer>",
+                  "description": "Month number (1-12)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "285b855b-de4c-4fce-a0c6-078298eae668",
+              "name": "Monthly high tide flooding data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "htf_monthly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "station",
+                      "value": "9414290"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2022"
+                    },
+                    {
+                      "key": "month",
+                      "value": "6"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"stationId\": \"9414290\",\n  \"data\": [\n    {\n      \"year\": 2022,\n      \"minor\": 4,\n      \"moderate\": 1,\n      \"major\": 0\n    },\n    {\n      \"year\": 2022,\n      \"minor\": 4,\n      \"moderate\": 1,\n      \"major\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidesandcurrents.noaa.gov/api/prod",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c0699a6f-80e3-40c2-a5af-2e6e5971bbc0",
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Htf Monthly API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.\n\nContact Support:\n Name: CO-OPS User Services\n Email: co-ops.userservices@noaa.gov",
+      "type": "text/plain"
+    }
+  }
+}

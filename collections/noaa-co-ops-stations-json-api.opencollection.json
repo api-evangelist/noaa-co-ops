@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Stations.json API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stations.json",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all stations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidesandcurrents.noaa.gov/api/prod/stations.json",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter stations by data type capability."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Unit system for returned values."
+              },
+              {
+                "name": "expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of sub-resources to embed in response."
+              }
+            ]
+          },
+          "docs": "Returns a collection of all NOAA CO-OPS monitoring stations, optionally filtered by station type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Htf Monthly API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Htf Monthly",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get monthly high tide flooding statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidesandcurrents.noaa.gov/api/prod/htf_monthly",
+            "params": [
+              {
+                "name": "station",
+                "value": "",
+                "type": "query",
+                "description": "7-digit station ID."
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "Year (YYYY)."
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "query",
+                "description": "Month number (1-12)."
+              }
+            ]
+          },
+          "docs": "Returns monthly high tide flooding day counts for a given station."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

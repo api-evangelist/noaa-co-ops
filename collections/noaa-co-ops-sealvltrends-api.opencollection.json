@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Sealvltrends API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sealvltrends",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get sea level trends",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidesandcurrents.noaa.gov/api/prod/sealvltrends",
+            "params": [
+              {
+                "name": "station",
+                "value": "",
+                "type": "query",
+                "description": "7-digit station ID."
+              },
+              {
+                "name": "affiliation",
+                "value": "",
+                "type": "query",
+                "description": "Station affiliation context."
+              }
+            ]
+          },
+          "docs": "Returns mean sea level trend data for a given station, including rate of change and confidence intervals."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

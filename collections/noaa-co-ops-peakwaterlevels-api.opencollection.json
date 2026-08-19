@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Peakwaterlevels API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Peakwaterlevels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get peak water levels by event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidesandcurrents.noaa.gov/api/prod/peakwaterlevels",
+            "params": [
+              {
+                "name": "eventid",
+                "value": "",
+                "type": "query",
+                "description": "Numerical event identifier."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Unit system for returned values."
+              },
+              {
+                "name": "datum",
+                "value": "",
+                "type": "query",
+                "description": "Vertical datum for water level values."
+              }
+            ]
+          },
+          "docs": "Returns peak water levels for a specific storm or event."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

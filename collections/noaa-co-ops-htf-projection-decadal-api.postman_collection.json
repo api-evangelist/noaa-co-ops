@@ -1,0 +1,144 @@
+{
+  "item": [
+    {
+      "id": "c2d58cd5-8dff-4f80-bc53-14461573ba21",
+      "name": "Htf Projection Decadal",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "769e5a28-70dc-445f-92bb-5695d8bd25d5",
+          "name": "Get decadal high tide flooding projections",
+          "request": {
+            "name": "Get decadal high tide flooding projections",
+            "description": {
+              "content": "Returns projected number of high tide flooding days per decade for a station under different flood thresholds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "htf_projection_decadal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "station",
+                  "value": "<string>",
+                  "description": "(Required) 7-digit station ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "decade",
+                  "value": "<integer>",
+                  "description": "Target decade (e.g., 2030, 2040)."
+                },
+                {
+                  "disabled": false,
+                  "key": "range",
+                  "value": "<integer>",
+                  "description": "Number of decades to project."
+                },
+                {
+                  "disabled": false,
+                  "key": "flood_threshold",
+                  "value": "<string>",
+                  "description": "Flood severity threshold to apply."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c8a1957-d264-469c-adfc-5a7f7f5d09eb",
+              "name": "Decadal high tide flooding projections",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "htf_projection_decadal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "station",
+                      "value": "9414290"
+                    },
+                    {
+                      "key": "decade",
+                      "value": "2030"
+                    },
+                    {
+                      "key": "range",
+                      "value": "3"
+                    },
+                    {
+                      "key": "flood_threshold",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"stationId\": \"9414290\",\n  \"data\": [\n    {\n      \"year\": 2022,\n      \"minor\": 4,\n      \"moderate\": 1,\n      \"major\": 0\n    },\n    {\n      \"year\": 2022,\n      \"minor\": 4,\n      \"moderate\": 1,\n      \"major\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidesandcurrents.noaa.gov/api/prod",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b312c818-fd84-4a97-a541-662cab5a5577",
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Htf Projection Decadal API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.\n\nContact Support:\n Name: CO-OPS User Services\n Email: co-ops.userservices@noaa.gov",
+      "type": "text/plain"
+    }
+  }
+}

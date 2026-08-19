@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Toptenwaterlevels API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Toptenwaterlevels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get top ten water levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidesandcurrents.noaa.gov/api/prod/toptenwaterlevels",
+            "params": [
+              {
+                "name": "station",
+                "value": "",
+                "type": "query",
+                "description": "7-digit station ID."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Unit system for returned values."
+              },
+              {
+                "name": "datum",
+                "value": "",
+                "type": "query",
+                "description": "Vertical datum for water level values."
+              }
+            ]
+          },
+          "docs": "Returns the top ten highest recorded water levels for a given station."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

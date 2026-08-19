@@ -1,0 +1,204 @@
+{
+  "item": [
+    {
+      "id": "09f95d19-0944-40d3-be50-63585a6aaa87",
+      "name": "Slr Projections",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82100420-bf4e-4cfc-9975-ff93c1b5ff08",
+          "name": "Get sea level rise projections",
+          "request": {
+            "name": "Get sea level rise projections",
+            "description": {
+              "content": "Returns future sea level rise projections for a station or geographic area based on NOAA scenarios.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "slr_projections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "station",
+                  "value": "<string>",
+                  "description": "7-digit station ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "affiliation",
+                  "value": "<string>",
+                  "description": "Station affiliation."
+                },
+                {
+                  "disabled": false,
+                  "key": "projection_year",
+                  "value": "<integer>",
+                  "description": "Target projection year (e.g., 2050, 2100)."
+                },
+                {
+                  "disabled": false,
+                  "key": "scenario",
+                  "value": "<string>",
+                  "description": "Sea level rise scenario."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<double>",
+                  "description": "Latitude for geographic bounding queries."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<double>",
+                  "description": "Longitude for geographic bounding queries."
+                },
+                {
+                  "disabled": false,
+                  "key": "min_lat",
+                  "value": "<double>",
+                  "description": "Minimum latitude for bounding box search."
+                },
+                {
+                  "disabled": false,
+                  "key": "max_lat",
+                  "value": "<double>",
+                  "description": "Maximum latitude for bounding box search."
+                },
+                {
+                  "disabled": false,
+                  "key": "min_lon",
+                  "value": "<double>",
+                  "description": "Minimum longitude for bounding box search."
+                },
+                {
+                  "disabled": false,
+                  "key": "max_lon",
+                  "value": "<double>",
+                  "description": "Maximum longitude for bounding box search."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38f0fac7-528c-424f-86cb-b239187ea522",
+              "name": "Sea level rise projections",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "slr_projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "station",
+                      "value": "9414290"
+                    },
+                    {
+                      "key": "affiliation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projection_year",
+                      "value": "2050"
+                    },
+                    {
+                      "key": "scenario",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "min_lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "max_lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "min_lon",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "max_lon",
+                      "value": "<double>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidesandcurrents.noaa.gov/api/prod",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d7b9b52b-873a-43c4-ad28-8fbdf0042d72",
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Slr Projections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.\n\nContact Support:\n Name: CO-OPS User Services\n Email: co-ops.userservices@noaa.gov",
+      "type": "text/plain"
+    }
+  }
+}

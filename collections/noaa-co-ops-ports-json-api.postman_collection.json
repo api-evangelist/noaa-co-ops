@@ -1,0 +1,114 @@
+{
+  "item": [
+    {
+      "id": "f69c3521-9bf3-49fe-846a-2386b5b9b65f",
+      "name": "Ports.json",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "15c01a68-b469-4edd-9352-7112db51cb59",
+          "name": "List PORTS stations",
+          "request": {
+            "name": "List PORTS stations",
+            "description": {
+              "content": "Returns a list of Physical Oceanographic Real-Time System (PORTS) stations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ports.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ports",
+                  "value": "<string>",
+                  "description": "PORTS code filter (e.g., cs for Chesapeake Bay)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "56688f17-2458-4936-a618-020758ef5f82",
+              "name": "List of PORTS stations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ports.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ports",
+                      "value": "cs"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 363,\n  \"stations\": [\n    {\n      \"id\": \"9414290\",\n      \"name\": \"San Francisco\",\n      \"lat\": 37.8063,\n      \"lng\": -122.4659,\n      \"affiliation\": \"NWLON\",\n      \"portscode\": \"sf\",\n      \"products\": {},\n      \"self\": \"https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json\"\n    },\n    {\n      \"id\": \"9414290\",\n      \"name\": \"San Francisco\",\n      \"lat\": 37.8063,\n      \"lng\": -122.4659,\n      \"affiliation\": \"NWLON\",\n      \"portscode\": \"sf\",\n      \"products\": {},\n      \"self\": \"https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidesandcurrents.noaa.gov/api/prod",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f69a72bb-75e5-4bb7-8f70-59d31749171b",
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Ports.json API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.\n\nContact Support:\n Name: CO-OPS User Services\n Email: co-ops.userservices@noaa.gov",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "item": [
+    {
+      "id": "c72e2db9-2dbe-42be-a908-db088f36941f",
+      "name": "Htf Annual",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6707ee5f-fbd7-4f93-bf47-f29101d94353",
+          "name": "Get annual high tide flooding statistics",
+          "request": {
+            "name": "Get annual high tide flooding statistics",
+            "description": {
+              "content": "Returns annual high tide flooding day counts and flood threshold exceedances for a given station.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "htf_annual"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "station",
+                  "value": "<string>",
+                  "description": "(Required) 7-digit station ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<integer>",
+                  "description": "Specific year to retrieve (YYYY)."
+                },
+                {
+                  "disabled": false,
+                  "key": "range",
+                  "value": "<integer>",
+                  "description": "Number of years to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "metric",
+                  "description": "Unit system for returned values."
+                },
+                {
+                  "disabled": false,
+                  "key": "datum",
+                  "value": "<string>",
+                  "description": "Vertical datum for water level values."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "71a45ceb-3df3-4487-86ff-c3a79b0ff12a",
+              "name": "Annual high tide flooding statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "htf_annual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "station",
+                      "value": "9414290"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2022"
+                    },
+                    {
+                      "key": "range",
+                      "value": "5"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"stationId\": \"9414290\",\n  \"data\": [\n    {\n      \"year\": 2022,\n      \"minor\": 4,\n      \"moderate\": 1,\n      \"major\": 0\n    },\n    {\n      \"year\": 2022,\n      \"minor\": 4,\n      \"moderate\": 1,\n      \"major\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidesandcurrents.noaa.gov/api/prod",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cdb265e2-404c-41b7-879f-7551e6df6f9a",
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Htf Annual API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.\n\nContact Support:\n Name: CO-OPS User Services\n Email: co-ops.userservices@noaa.gov",
+      "type": "text/plain"
+    }
+  }
+}

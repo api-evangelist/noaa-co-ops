@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Htf Projection Decadal API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Htf Projection Decadal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get decadal high tide flooding projections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidesandcurrents.noaa.gov/api/prod/htf_projection_decadal",
+            "params": [
+              {
+                "name": "station",
+                "value": "",
+                "type": "query",
+                "description": "7-digit station ID."
+              },
+              {
+                "name": "decade",
+                "value": "",
+                "type": "query",
+                "description": "Target decade (e.g., 2030, 2040)."
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "query",
+                "description": "Number of decades to project."
+              },
+              {
+                "name": "flood_threshold",
+                "value": "",
+                "type": "query",
+                "description": "Flood severity threshold to apply."
+              }
+            ]
+          },
+          "docs": "Returns projected number of high tide flooding days per decade for a station under different flood thresholds."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

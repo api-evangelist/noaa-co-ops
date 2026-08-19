@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Htf Annual API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Htf Annual",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get annual high tide flooding statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidesandcurrents.noaa.gov/api/prod/htf_annual",
+            "params": [
+              {
+                "name": "station",
+                "value": "",
+                "type": "query",
+                "description": "7-digit station ID."
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "Specific year to retrieve (YYYY)."
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "query",
+                "description": "Number of years to include."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Unit system for returned values."
+              },
+              {
+                "name": "datum",
+                "value": "",
+                "type": "query",
+                "description": "Vertical datum for water level values."
+              }
+            ]
+          },
+          "docs": "Returns annual high tide flooding day counts and flood threshold exceedances for a given station."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

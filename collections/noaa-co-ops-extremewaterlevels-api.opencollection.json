@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Extremewaterlevels API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Extremewaterlevels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get extreme water levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidesandcurrents.noaa.gov/api/prod/extremewaterlevels",
+            "params": [
+              {
+                "name": "station",
+                "value": "",
+                "type": "query",
+                "description": "7-digit station ID."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Unit system for returned values."
+              },
+              {
+                "name": "extremeType",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return annual or monthly extremes."
+              },
+              {
+                "name": "levelType",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return high or low extreme water levels."
+              },
+              {
+                "name": "details",
+                "value": "",
+                "type": "query",
+                "description": "Additional detail to include in response."
+              }
+            ]
+          },
+          "docs": "Returns statistically computed extreme (annual or monthly) high and low water levels for a station."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,345 @@
+{
+  "item": [
+    {
+      "id": "4149066a-bec9-42b9-9cae-b6db18d52fa0",
+      "name": "Stations",
+      "description": {
+        "content": "NOAA CO-OPS station metadata, sensors, datums, and configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "71cffc65-3e5f-45b9-98b1-b88f654fc49c",
+          "name": "Get a single station",
+          "request": {
+            "name": "Get a single station",
+            "description": {
+              "content": "Returns metadata for a single NOAA CO-OPS monitoring station by station ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stations",
+                "{{stationId}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "metric",
+                  "description": "Unit system for returned values."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of sub-resources to embed."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43fac3ad-8987-42e3-bb47-4feab78d4fb8",
+              "name": "Station metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations",
+                    "{{stationId}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "details,sensors,datums,notices"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"stations\": [\n    {\n      \"id\": \"9414290\",\n      \"name\": \"San Francisco\",\n      \"lat\": 37.8063,\n      \"lng\": -122.4659,\n      \"affiliation\": \"NWLON\",\n      \"portscode\": \"sf\",\n      \"products\": {},\n      \"self\": \"https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json\"\n    },\n    {\n      \"id\": \"9414290\",\n      \"name\": \"San Francisco\",\n      \"lat\": 37.8063,\n      \"lng\": -122.4659,\n      \"affiliation\": \"NWLON\",\n      \"portscode\": \"sf\",\n      \"products\": {},\n      \"self\": \"https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c309d09e-65f3-4b5b-b479-2c21144b818a",
+              "name": "Station not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations",
+                    "{{stationId}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "details,sensors,datums,notices"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bda52467-037f-489d-b5a5-24933ce4ef47",
+          "name": "Get a station sub-resource",
+          "request": {
+            "name": "Get a station sub-resource",
+            "description": {
+              "content": "Returns a specific sub-resource (datums, benchmarks, harmonic constituents, sensors, etc.) for a given station.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stations",
+                ":stationId",
+                "{{resource}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "metric",
+                  "description": "Unit system for returned values."
+                },
+                {
+                  "disabled": false,
+                  "key": "bin",
+                  "value": "<integer>",
+                  "description": "Specific bin number for current harmonic constituents."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "stationId",
+                  "description": "(Required) 7-digit station identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3ac3907-798e-4e8c-845e-76bb7d1bd887",
+              "name": "Station sub-resource data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations",
+                    ":stationId",
+                    "{{resource}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "bin",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stationId",
+                      "description": "(Required) 7-digit station identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21837f41-5a6e-4a62-9d6b-93ea1dacb277",
+              "name": "Station or resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations",
+                    ":stationId",
+                    "{{resource}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "bin",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stationId",
+                      "description": "(Required) 7-digit station identifier."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidesandcurrents.noaa.gov/api/prod",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) 7-digit station identifier (e.g., 9414290) or currents station code.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "stationId"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The sub-resource type to retrieve.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "resource"
+    }
+  ],
+  "info": {
+    "_postman_id": "10082a02-4dde-4ad1-bc35-8ebb89e0be71",
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Stations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.\n\nContact Support:\n Name: CO-OPS User Services\n Email: co-ops.userservices@noaa.gov",
+      "type": "text/plain"
+    }
+  }
+}

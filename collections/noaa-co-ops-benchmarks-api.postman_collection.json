@@ -1,0 +1,134 @@
+{
+  "item": [
+    {
+      "id": "7b419b1e-2258-41ec-a0e2-33f8cb8888b6",
+      "name": "Benchmarks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f040f10f-a081-4a1b-a3c4-83463ac809bc",
+          "name": "Get benchmark data",
+          "request": {
+            "name": "Get benchmark data",
+            "description": {
+              "content": "Returns geodetic benchmark data for a specified survey mark.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "benchmarks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "vm",
+                  "value": "<string>",
+                  "description": "4-digit vertical monument code."
+                },
+                {
+                  "disabled": false,
+                  "key": "pid",
+                  "value": "<string>",
+                  "description": "Permanent identifier for a benchmark mark (2 letters + 4 digits)."
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>",
+                  "description": "Date of benchmark survey (YYYY-MM-DD)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26fa093f-aef3-4b37-a296-fbfd83a3f6fd",
+              "name": "Benchmark data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benchmarks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "vm",
+                      "value": "1234"
+                    },
+                    {
+                      "key": "pid",
+                      "value": "AB1234"
+                    },
+                    {
+                      "key": "date",
+                      "value": "2020-01-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidesandcurrents.noaa.gov/api/prod",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a2ef03da-d397-4b63-8701-4728ddcfc25a",
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.\n\nContact Support:\n Name: CO-OPS User Services\n Email: co-ops.userservices@noaa.gov",
+      "type": "text/plain"
+    }
+  }
+}

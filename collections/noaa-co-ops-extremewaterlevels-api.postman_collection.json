@@ -1,0 +1,154 @@
+{
+  "item": [
+    {
+      "id": "8186545f-15c0-4599-92e6-de75d732abca",
+      "name": "Extremewaterlevels",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9c9eb3fc-c875-443e-bf32-253a0b59e930",
+          "name": "Get extreme water levels",
+          "request": {
+            "name": "Get extreme water levels",
+            "description": {
+              "content": "Returns statistically computed extreme (annual or monthly) high and low water levels for a station.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "extremewaterlevels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "station",
+                  "value": "<string>",
+                  "description": "(Required) 7-digit station ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "metric",
+                  "description": "Unit system for returned values."
+                },
+                {
+                  "disabled": false,
+                  "key": "extremeType",
+                  "value": "<string>",
+                  "description": "Whether to return annual or monthly extremes."
+                },
+                {
+                  "disabled": false,
+                  "key": "levelType",
+                  "value": "<string>",
+                  "description": "Whether to return high or low extreme water levels."
+                },
+                {
+                  "disabled": false,
+                  "key": "details",
+                  "value": "<string>",
+                  "description": "Additional detail to include in response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb968704-b022-4890-94af-3a266d81035a",
+              "name": "Extreme water level statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "extremewaterlevels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "station",
+                      "value": "9414290"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "extremeType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "levelType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "details",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidesandcurrents.noaa.gov/api/prod",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0d1f8c4a-dd7a-4c5f-9176-b83dd7c35e47",
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Extremewaterlevels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.\n\nContact Support:\n Name: CO-OPS User Services\n Email: co-ops.userservices@noaa.gov",
+      "type": "text/plain"
+    }
+  }
+}

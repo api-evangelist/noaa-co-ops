@@ -1,0 +1,134 @@
+{
+  "item": [
+    {
+      "id": "1a9fa0bb-57c0-48f0-896b-388fa2908c75",
+      "name": "Stations.json",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7a4ec411-7518-4a5d-9311-ae27fcbccfed",
+          "name": "List all stations",
+          "request": {
+            "name": "List all stations",
+            "description": {
+              "content": "Returns a collection of all NOAA CO-OPS monitoring stations, optionally filtered by station type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stations.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter stations by data type capability."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "metric",
+                  "description": "Unit system for returned values."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of sub-resources to embed in response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1abd17f1-f791-46ba-97a9-8ee88a6f913b",
+              "name": "List of stations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "details,sensors,datums"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 363,\n  \"stations\": [\n    {\n      \"id\": \"9414290\",\n      \"name\": \"San Francisco\",\n      \"lat\": 37.8063,\n      \"lng\": -122.4659,\n      \"affiliation\": \"NWLON\",\n      \"portscode\": \"sf\",\n      \"products\": {},\n      \"self\": \"https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json\"\n    },\n    {\n      \"id\": \"9414290\",\n      \"name\": \"San Francisco\",\n      \"lat\": 37.8063,\n      \"lng\": -122.4659,\n      \"affiliation\": \"NWLON\",\n      \"portscode\": \"sf\",\n      \"products\": {},\n      \"self\": \"https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidesandcurrents.noaa.gov/api/prod",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9dcf0c29-741c-464c-b0df-4290adce4701",
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Stations.json API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.\n\nContact Support:\n Name: CO-OPS User Services\n Email: co-ops.userservices@noaa.gov",
+      "type": "text/plain"
+    }
+  }
+}

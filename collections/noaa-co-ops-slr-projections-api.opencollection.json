@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Slr Projections API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Slr Projections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get sea level rise projections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidesandcurrents.noaa.gov/api/prod/slr_projections",
+            "params": [
+              {
+                "name": "station",
+                "value": "",
+                "type": "query",
+                "description": "7-digit station ID."
+              },
+              {
+                "name": "affiliation",
+                "value": "",
+                "type": "query",
+                "description": "Station affiliation."
+              },
+              {
+                "name": "projection_year",
+                "value": "",
+                "type": "query",
+                "description": "Target projection year (e.g., 2050, 2100)."
+              },
+              {
+                "name": "scenario",
+                "value": "",
+                "type": "query",
+                "description": "Sea level rise scenario."
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude for geographic bounding queries."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude for geographic bounding queries."
+              },
+              {
+                "name": "min_lat",
+                "value": "",
+                "type": "query",
+                "description": "Minimum latitude for bounding box search."
+              },
+              {
+                "name": "max_lat",
+                "value": "",
+                "type": "query",
+                "description": "Maximum latitude for bounding box search."
+              },
+              {
+                "name": "min_lon",
+                "value": "",
+                "type": "query",
+                "description": "Minimum longitude for bounding box search."
+              },
+              {
+                "name": "max_lon",
+                "value": "",
+                "type": "query",
+                "description": "Maximum longitude for bounding box search."
+              }
+            ]
+          },
+          "docs": "Returns future sea level rise projections for a station or geographic area based on NOAA scenarios."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,350 @@
+{
+  "item": [
+    {
+      "id": "03a450ae-0ca0-47af-8ac3-9625c5739572",
+      "name": "Datagetter",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "468cc6d6-c3c8-4460-8dc3-238530e46cc3",
+          "name": "Retrieve observational or prediction data",
+          "request": {
+            "name": "Retrieve observational or prediction data",
+            "description": {
+              "content": "Returns tides, water levels, currents, meteorological observations, or predictions from a specified NOAA CO-OPS station for a given time range and product type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "datagetter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "station",
+                  "value": "<string>",
+                  "description": "(Required) 7-character station ID (e.g., 9414290) or currents station code (e.g., cb1401)."
+                },
+                {
+                  "disabled": false,
+                  "key": "product",
+                  "value": "<string>",
+                  "description": "(Required) The type of data product to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "begin_date",
+                  "value": "<string>",
+                  "description": "Start date for data retrieval. Format: yyyyMMdd or MM/dd/yyyy. Required unless using `date` or `range`."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<string>",
+                  "description": "End date for data retrieval. Format: yyyyMMdd or MM/dd/yyyy. Required unless using `date` or `range`."
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Quick time reference shorthand. Mutually exclusive with begin_date/end_date/range."
+                },
+                {
+                  "disabled": false,
+                  "key": "range",
+                  "value": "<integer>",
+                  "description": "Hours of data to retrieve from the current time (or from begin_date if supplied). Use `range=1` to `range=48` for sub-daily products; large values for predictions."
+                },
+                {
+                  "disabled": false,
+                  "key": "datum",
+                  "value": "<string>",
+                  "description": "Vertical datum for water level data. Required for water_level and predictions products."
+                },
+                {
+                  "disabled": false,
+                  "key": "time_zone",
+                  "value": "gmt",
+                  "description": "Time zone for returned timestamps."
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>",
+                  "description": "Data interval. Use 'h' for hourly, or integer minutes (1, 6, 15, 30, 60). Applies to water_level and currents."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "metric",
+                  "description": "Measurement unit system."
+                },
+                {
+                  "disabled": false,
+                  "key": "bin",
+                  "value": "<integer>",
+                  "description": "Current depth bin number for ADCP currents data."
+                },
+                {
+                  "disabled": false,
+                  "key": "vel_type",
+                  "value": "<string>",
+                  "description": "Current velocity output format."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format."
+                },
+                {
+                  "disabled": false,
+                  "key": "application",
+                  "value": "<string>",
+                  "description": "Identifier for the calling application. Helps NOAA track usage."
+                },
+                {
+                  "disabled": false,
+                  "key": "expand",
+                  "value": "<string>",
+                  "description": "Include additional detail in currents response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "013ad7ef-b38c-4568-af2a-96b53b1c9914",
+              "name": "Successful data response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datagetter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "station",
+                      "value": "9414290"
+                    },
+                    {
+                      "key": "product",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "begin_date",
+                      "value": "20230101"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "20230131"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "range",
+                      "value": "24"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "time_zone",
+                      "value": "gmt"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "6"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "bin",
+                      "value": "1"
+                    },
+                    {
+                      "key": "vel_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "application",
+                      "value": "MyApp"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"id\": \"9414290\",\n    \"name\": \"San Francisco\",\n    \"lat\": \"37.8063\",\n    \"lon\": \"-122.4659\"\n  },\n  \"data\": [\n    {\n      \"t\": \"2023-01-01 00:00\",\n      \"v\": \"1.234\",\n      \"s\": \"0.009\",\n      \"f\": \"0,0,0,0\",\n      \"q\": \"v\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a03412e7-a206-49aa-a828-68c857cd094c",
+              "name": "Bad request — invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datagetter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "station",
+                      "value": "9414290"
+                    },
+                    {
+                      "key": "product",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "begin_date",
+                      "value": "20230101"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "20230131"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "range",
+                      "value": "24"
+                    },
+                    {
+                      "key": "datum",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "time_zone",
+                      "value": "gmt"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "6"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "bin",
+                      "value": "1"
+                    },
+                    {
+                      "key": "vel_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "application",
+                      "value": "MyApp"
+                    },
+                    {
+                      "key": "expand",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"No data was found. This product was not offered at this station at the requested time.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidesandcurrents.noaa.gov/api/prod",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "39ce66a6-6682-4bcf-867e-a1449873e2be",
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Datagetter API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.\n\nContact Support:\n Name: CO-OPS User Services\n Email: co-ops.userservices@noaa.gov",
+      "type": "text/plain"
+    }
+  }
+}

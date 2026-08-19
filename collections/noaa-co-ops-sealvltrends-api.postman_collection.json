@@ -1,0 +1,124 @@
+{
+  "item": [
+    {
+      "id": "325b775b-ceaf-49ea-9dcb-b81335cdc583",
+      "name": "Sealvltrends",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "956b71f7-57c7-4f25-b61f-fa22776a2905",
+          "name": "Get sea level trends",
+          "request": {
+            "name": "Get sea level trends",
+            "description": {
+              "content": "Returns mean sea level trend data for a given station, including rate of change and confidence intervals.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sealvltrends"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "station",
+                  "value": "<string>",
+                  "description": "(Required) 7-digit station ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "affiliation",
+                  "value": "US",
+                  "description": "Station affiliation context."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "566368d2-36e7-43f3-a5a4-09957dde68b9",
+              "name": "Sea level trend data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sealvltrends"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "station",
+                      "value": "9414290"
+                    },
+                    {
+                      "key": "affiliation",
+                      "value": "US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"stationId\": \"9414290\",\n  \"stationName\": \"San Francisco\",\n  \"trend\": 1.94,\n  \"ci95\": 0.19,\n  \"startYear\": 1897,\n  \"endYear\": 2022\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tidesandcurrents.noaa.gov/api/prod",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "15067ed3-cc27-4762-8e4d-ebaafa1fb97c",
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks Sealvltrends API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.\n\nContact Support:\n Name: CO-OPS User Services\n Email: co-ops.userservices@noaa.gov",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NOAA CO-OPS Data Retrieval Benchmarks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Benchmarks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get benchmark data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tidesandcurrents.noaa.gov/api/prod/benchmarks",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "query",
+                "description": "4-digit vertical monument code."
+              },
+              {
+                "name": "pid",
+                "value": "",
+                "type": "query",
+                "description": "Permanent identifier for a benchmark mark (2 letters + 4 digits)."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Date of benchmark survey (YYYY-MM-DD)."
+              }
+            ]
+          },
+          "docs": "Returns geodetic benchmark data for a specified survey mark."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
