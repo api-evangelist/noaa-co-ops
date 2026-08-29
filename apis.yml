@@ -1,5 +1,17 @@
 name: NOAA CO-OPS
 description: NOAA Center for Operational Oceanographic Products and Services (CO-OPS) provides REST APIs for tides and currents predictions, observed water levels, meteorological data (wind, barometric pressure, air and water temperature), and oceanographic products. The APIs serve real-time and historical data from NOAA observation stations across the United States coastline and Great Lakes.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
