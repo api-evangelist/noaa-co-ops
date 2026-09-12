@@ -248,6 +248,8 @@ apis:
   - type: Documentation
     url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/
 common:
+  - type: Website
+    url: https://www.noaa.gov/
   - type: AgenticAccess
     url: agentic-access/noaa-co-ops-agentic-access.yml
   - type: DomainSecurity
