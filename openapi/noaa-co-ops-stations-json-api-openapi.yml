@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NOAA CO-OPS Data Retrieval Benchmarks Stations.json API
-  description: Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.
+  title: NOAA CO-OPS Metadata Stations.json API
+  description: Provides access to metadata for NOAA CO-OPS monitoring stations, including station locations, sensor configurations, harmonic constituents, datums, benchmark data, flood levels, and tide prediction offsets.
   version: 1.0.0
   contact:
     name: CO-OPS User Services
@@ -10,8 +10,8 @@ info:
     name: Public Domain
     url: https://www.noaa.gov/disclaimer
 servers:
-- url: https://api.tidesandcurrents.noaa.gov/api/prod
-  description: NOAA CO-OPS Data Retrieval API
+- url: https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi
+  description: NOAA CO-OPS Metadata API
 tags:
 - name: Stations.json
 paths:
@@ -79,6 +79,17 @@ paths:
       - Stations.json
 components:
   schemas:
+    StationListResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of stations returned
+          example: 363
+        stations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Station'
     Station:
       type: object
       properties:
@@ -123,14 +134,3 @@ components:
           type: string
           description: URL of this station resource
           example: https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json
-    StationListResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Number of stations returned
-          example: 363
-        stations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Station'

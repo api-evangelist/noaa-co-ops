@@ -1,17 +1,17 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NOAA CO-OPS Data Retrieval Benchmarks Extremewaterlevels API
-  description: Retrieves real-time and historical observational and prediction data from NOAA CO-OPS coastal and Great Lakes monitoring stations. Products include water levels, tidal predictions, meteorological observations (wind, air pressure, air and water temperature, humidity, conductivity, salinity, visibility), and currents data.
+  title: NOAA CO-OPS Derived Product Extremewaterlevels API
+  description: Provides derived oceanographic products computed from CO-OPS observational data, including sea level trends, sea level rise projections, high tide flooding statistics and projections, extreme water levels, peak water levels, and benchmark data.
   version: 1.0.0
   contact:
-    name: CO-OPS User Services
-    email: co-ops.userservices@noaa.gov
+    name: Tide Predictions
+    email: tide.predictions@noaa.gov
   license:
     name: Public Domain
     url: https://www.noaa.gov/disclaimer
 servers:
-- url: https://api.tidesandcurrents.noaa.gov/api/prod
-  description: NOAA CO-OPS Data Retrieval API
+- url: https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi
+  description: NOAA CO-OPS Derived Product API
 tags:
 - name: Extremewaterlevels
 paths:
