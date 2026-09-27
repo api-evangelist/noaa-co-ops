@@ -39,17 +39,6 @@ paths:
       - Ports.json
 components:
   schemas:
-    StationListResponse:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Number of stations returned
-          example: 363
-        stations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Station'
     Station:
       type: object
       properties:
@@ -94,3 +83,14 @@ components:
           type: string
           description: URL of this station resource
           example: https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json
+    StationListResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of stations returned
+          example: 363
+        stations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Station'
