@@ -201,6 +201,25 @@ paths:
       - Datagetter
 components:
   schemas:
+    DataResponse:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/StationMetadata'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataPoint'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Human-readable error description
+              example: No data was found. This product was not offered at this station at the requested time.
     StationMetadata:
       type: object
       properties:
@@ -220,16 +239,6 @@ components:
           type: string
           description: Station longitude
           example: '-122.4659'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            message:
-              type: string
-              description: Human-readable error description
-              example: No data was found. This product was not offered at this station at the requested time.
     DataPoint:
       type: object
       properties:
@@ -253,12 +262,3 @@ components:
           type: string
           description: Quality assurance/quality control level (v=verified, p=preliminary)
           example: v
-    DataResponse:
-      type: object
-      properties:
-        metadata:
-          $ref: '#/components/schemas/StationMetadata'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataPoint'

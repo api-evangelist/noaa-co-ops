@@ -121,13 +121,6 @@ paths:
       - Stations
 components:
   schemas:
-    StationResponse:
-      type: object
-      properties:
-        stations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Station'
     Station:
       type: object
       properties:
@@ -172,3 +165,10 @@ components:
           type: string
           description: URL of this station resource
           example: https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9414290.json
+    StationResponse:
+      type: object
+      properties:
+        stations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Station'
