@@ -201,15 +201,6 @@ paths:
       - Datagetter
 components:
   schemas:
-    DataResponse:
-      type: object
-      properties:
-        metadata:
-          $ref: '#/components/schemas/StationMetadata'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataPoint'
     ErrorResponse:
       type: object
       properties:
@@ -262,3 +253,12 @@ components:
           type: string
           description: Quality assurance/quality control level (v=verified, p=preliminary)
           example: v
+    DataResponse:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/StationMetadata'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataPoint'
