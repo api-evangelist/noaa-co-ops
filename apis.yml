@@ -266,12 +266,6 @@ common:
     url: https://tidesandcurrents.noaa.gov/contact.html
   - type: StatusPage
     url: https://tidesandcurrents.noaa.gov/
-  - type: Plans
-    url: /plans/free.md
-  - type: RateLimits
-    url: /rate-limits/rate-limits.md
-  - type: FinOps
-    url: /finops/finops.md
   - type: JSONSchema
     url: /json-schema/data-point.json
   - type: JSONSchema
